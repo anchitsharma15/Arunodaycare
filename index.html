@@ -3,800 +3,2304 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ArunodayCare Technologies | AI, Data & Automation Solutions</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        ArunodayCare Technologies | AI, Data & Automation
+    </title>
 
     <meta name="description"
-        content="ArunodayCare Technologies builds practical AI agents, business intelligence solutions, data platforms and workflow automation for modern businesses.">
+          content="ArunodayCare Technologies builds AI agents, modern analytics platforms, business intelligence solutions and intelligent workflow automation.">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
 
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
+          rel="stylesheet">
 
     <style>
+
+        /* ==========================================================
+           DESIGN SYSTEM
+        ========================================================== */
+
         :root {
-            --primary: #2563eb;
-            --primary-light: #60a5fa;
-            --purple: #7c3aed;
-            --green: #10b981;
 
-            --dark: #07111f;
-            --dark-2: #0b1728;
-            --dark-3: #111f33;
-
-            --text: #e5e7eb;
-            --muted: #94a3b8;
+            --black: #050505;
+            --dark: #0a0a0a;
+            --dark-soft: #111214;
 
             --white: #ffffff;
-            --border: rgba(255, 255, 255, 0.10);
+            --off-white: #f7f7f5;
+            --light-grey: #eeeeec;
+            --mid-grey: #d8d8d5;
 
-            --max-width: 1200px;
+            --text-dark: #101114;
+            --text-light: #f5f5f7;
+
+            --muted-dark: #67676d;
+            --muted-light: #a2a2a8;
+
+            --blue: #1473e6;
+            --cyan: #00c6ff;
+            --violet: #7c3aed;
+
+            --border-light:
+                rgba(0, 0, 0, 0.08);
+
+            --border-dark:
+                rgba(255, 255, 255, 0.10);
+
+            --max-width: 1380px;
+
+            --ease:
+                cubic-bezier(.2, .8, .2, 1);
         }
+
 
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
         }
+
 
         html {
             scroll-behavior: smooth;
         }
 
+
         body {
-            font-family: "Inter", sans-serif;
-            background: var(--dark);
-            color: var(--text);
-            line-height: 1.6;
+
+            font-family:
+                "Inter",
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            background: var(--white);
+
+            color: var(--text-dark);
+
             overflow-x: hidden;
+
+            -webkit-font-smoothing:
+                antialiased;
         }
 
-        a {
-            text-decoration: none;
-            color: inherit;
+
+        img {
+            max-width: 100%;
         }
+
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+
+        button {
+            font: inherit;
+        }
+
 
         section {
             scroll-margin-top: 90px;
         }
 
+
         .container {
-            width: min(92%, var(--max-width));
-            margin: auto;
+
+            width: min(
+                calc(100% - 56px),
+                var(--max-width)
+            );
+
+            margin: 0 auto;
         }
 
-        /* ==========================
+
+
+        /* ==========================================================
            NAVIGATION
-        ========================== */
+        ========================================================== */
 
-        nav {
+        .navbar {
+
             position: fixed;
+
             top: 0;
+            left: 0;
+
             width: 100%;
-            z-index: 1000;
-
-            background: rgba(7, 17, 31, 0.88);
-            backdrop-filter: blur(16px);
-
-            border-bottom: 1px solid var(--border);
-        }
-
-        .nav-container {
-            max-width: var(--max-width);
-            width: 92%;
-            margin: auto;
 
             height: 76px;
 
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            z-index: 9999;
+
+            background:
+                rgba(250, 250, 249, .78);
+
+            backdrop-filter:
+                blur(20px)
+                saturate(180%);
+
+            -webkit-backdrop-filter:
+                blur(20px)
+                saturate(180%);
+
+            border-bottom:
+                1px solid
+                rgba(0, 0, 0, .06);
+
+            transition:
+                background .35s ease,
+                box-shadow .35s ease;
         }
+
+
+        .navbar.scrolled {
+
+            background:
+                rgba(255, 255, 255, .93);
+
+            box-shadow:
+                0 8px 30px
+                rgba(0, 0, 0, .04);
+        }
+
+
+        .nav-inner {
+
+            max-width: var(--max-width);
+
+            width: min(
+                calc(100% - 56px),
+                var(--max-width)
+            );
+
+            height: 100%;
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+        }
+
 
         .brand {
+
             display: flex;
+
             align-items: center;
-            gap: 12px;
+
+            gap: 11px;
         }
 
-        .brand img {
-            height: 45px;
-            width: auto;
+
+        .brand-logo {
+
+            width: 42px;
+            height: 42px;
+
+            object-fit: contain;
+
+            flex-shrink: 0;
         }
+
 
         .brand-name {
-            font-size: 1.15rem;
+
+            font-size: 1rem;
+
             font-weight: 700;
+
+            letter-spacing:
+                -0.03em;
+
+            white-space: nowrap;
         }
+
 
         .brand-name span {
-            color: var(--primary-light);
+
+            font-weight: 500;
+
+            color: var(--blue);
         }
+
 
         .nav-links {
+
             display: flex;
-            gap: 30px;
-            list-style: none;
+
             align-items: center;
+
+            gap: 32px;
+
+            list-style: none;
         }
+
 
         .nav-links a {
-            color: #cbd5e1;
-            font-size: 0.95rem;
-            transition: 0.2s;
+
+            font-size: .9rem;
+
+            font-weight: 500;
+
+            color: #343438;
+
+            transition:
+                color .2s ease;
         }
+
 
         .nav-links a:hover {
-            color: white;
+            color: var(--blue);
         }
 
-        .nav-cta {
-            padding: 10px 20px;
-            background: var(--primary);
-            border-radius: 8px;
+
+        .nav-button {
+
             color: white !important;
+
+            background: var(--black);
+
+            padding:
+                10px 18px;
+
+            border-radius:
+                999px;
+
+            transition:
+                transform .25s var(--ease),
+                background .25s ease !important;
         }
 
-        .menu-button {
+
+        .nav-button:hover {
+
+            background:
+                var(--blue);
+
+            transform:
+                translateY(-1px);
+        }
+
+
+        .mobile-menu-button {
+
             display: none;
-            background: none;
-            border: none;
-            color: white;
-            font-size: 1.7rem;
+
+            border: 0;
+
+            background:
+                transparent;
+
+            color: var(--black);
+
+            font-size: 1.6rem;
+
             cursor: pointer;
         }
 
-        /* ==========================
+
+
+        /* ==========================================================
            HERO
-        ========================== */
+        ========================================================== */
 
         .hero {
-            position: relative;
+
             min-height: 100vh;
 
-            display: flex;
-            align-items: center;
-
-            padding-top: 100px;
+            padding-top:
+                76px;
 
             background:
-                radial-gradient(circle at 80% 20%, rgba(124, 58, 237, 0.25), transparent 30%),
-                radial-gradient(circle at 20% 70%, rgba(37, 99, 235, 0.20), transparent 35%),
-                var(--dark);
+                var(--off-white);
+
+            position: relative;
+
+            overflow: hidden;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
         }
 
-        .hero::before {
-            content: "";
-            position: absolute;
-            width: 500px;
-            height: 500px;
 
-            top: 120px;
+        .hero::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 760px;
+            height: 760px;
+
             right: -200px;
+            top: 80px;
 
             border-radius: 50%;
 
-            background: rgba(37, 99, 235, 0.12);
-            filter: blur(80px);
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(0, 198, 255, .12),
+                    rgba(124, 58, 237, .06) 40%,
+                    transparent 70%
+                );
+
+            filter: blur(20px);
+
+            pointer-events: none;
         }
+
 
         .hero-content {
-            max-width: 850px;
+
             position: relative;
+
             z-index: 2;
+
+            padding:
+                120px 0 90px;
         }
 
-        .eyebrow {
-            display: inline-block;
 
-            color: #93c5fd;
+        .hero-kicker {
 
-            background: rgba(37, 99, 235, 0.12);
-
-            border: 1px solid rgba(96, 165, 250, 0.25);
-
-            padding: 8px 14px;
-
-            border-radius: 30px;
-
-            font-size: 0.85rem;
-            font-weight: 600;
-
-            margin-bottom: 25px;
-        }
-
-        .hero h1 {
-            font-size: clamp(3rem, 7vw, 5.8rem);
-            line-height: 1.02;
-            letter-spacing: -4px;
-
-            margin-bottom: 28px;
-        }
-
-        .gradient-text {
-            background: linear-gradient(
-                90deg,
-                #60a5fa,
-                #a78bfa,
-                #34d399
-            );
-
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-description {
-            max-width: 720px;
-
-            font-size: 1.2rem;
-
-            color: var(--muted);
-
-            margin-bottom: 35px;
-        }
-
-        .hero-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-
-            padding: 14px 24px;
-
-            border-radius: 9px;
-
-            font-weight: 600;
-
-            transition: 0.25s;
-        }
-
-        .button-primary {
-            background: var(--primary);
-            color: white;
-        }
-
-        .button-primary:hover {
-            background: #1d4ed8;
-            transform: translateY(-2px);
-        }
-
-        .button-secondary {
-            border: 1px solid var(--border);
-            color: white;
-            background: rgba(255, 255, 255, 0.03);
-        }
-
-        .button-secondary:hover {
-            background: rgba(255, 255, 255, 0.08);
-        }
-
-        /* ==========================
-           TECHNOLOGY BAR
-        ========================== */
-
-        .technology-bar {
-            padding: 28px 0;
-
-            background: var(--dark-2);
-
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .technology-list {
             display: flex;
 
-            justify-content: center;
             align-items: center;
 
-            flex-wrap: wrap;
+            gap: 10px;
 
-            gap: 15px;
-        }
+            margin-bottom:
+                28px;
 
-        .tech-pill {
-            color: #cbd5e1;
+            color:
+                var(--muted-dark);
 
-            border: 1px solid var(--border);
+            text-transform:
+                uppercase;
 
-            background: rgba(255, 255, 255, 0.03);
+            letter-spacing:
+                .14em;
 
-            padding: 8px 15px;
-
-            border-radius: 30px;
-
-            font-size: 0.85rem;
-        }
-
-        /* ==========================
-           GENERAL SECTIONS
-        ========================== */
-
-        .section {
-            padding: 110px 0;
-        }
-
-        .section-dark {
-            background: var(--dark-2);
-        }
-
-        .section-header {
-            max-width: 720px;
-            margin-bottom: 55px;
-        }
-
-        .section-label {
-            color: var(--primary-light);
-
-            text-transform: uppercase;
-
-            font-size: 0.8rem;
-
-            letter-spacing: 2px;
+            font-size:
+                .72rem;
 
             font-weight: 700;
-
-            margin-bottom: 10px;
         }
 
-        .section-title {
-            font-size: clamp(2rem, 4vw, 3.2rem);
 
-            line-height: 1.15;
+        .hero-kicker::before {
 
-            margin-bottom: 18px;
+            content: "";
+
+            width: 30px;
+            height: 1px;
+
+            background:
+                var(--blue);
         }
 
-        .section-description {
-            color: var(--muted);
-            font-size: 1.05rem;
+
+        .hero h1 {
+
+            max-width:
+                1120px;
+
+            font-size:
+                clamp(
+                    4.2rem,
+                    8vw,
+                    8.5rem
+                );
+
+            line-height:
+                .92;
+
+            letter-spacing:
+                -.075em;
+
+            font-weight:
+                700;
         }
 
-        /* ==========================
-           PRODUCTS
-        ========================== */
 
-        .products-grid {
+        .hero h1 .gradient-word {
+
+            background:
+                linear-gradient(
+                    100deg,
+                    #0c6fff,
+                    #00b7ff 45%,
+                    #7655ff
+                );
+
+            -webkit-background-clip:
+                text;
+
+            background-clip:
+                text;
+
+            color:
+                transparent;
+        }
+
+
+        .hero-bottom {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                flex-end;
+
+            gap: 50px;
+
+            margin-top:
+                60px;
+        }
+
+
+        .hero-copy {
+
+            max-width:
+                650px;
+
+            color:
+                var(--muted-dark);
+
+            font-size:
+                clamp(
+                    1rem,
+                    1.5vw,
+                    1.22rem
+                );
+
+            line-height:
+                1.7;
+        }
+
+
+        .hero-actions {
+
+            display: flex;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
+
+            flex-shrink: 0;
+        }
+
+
+
+        /* ==========================================================
+           BUTTONS
+        ========================================================== */
+
+        .button {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 10px;
+
+            min-height: 48px;
+
+            padding:
+                0 22px;
+
+            border-radius:
+                999px;
+
+            font-size:
+                .91rem;
+
+            font-weight:
+                600;
+
+            transition:
+                transform .25s var(--ease),
+                background .25s ease,
+                color .25s ease;
+        }
+
+
+        .button:hover {
+
+            transform:
+                translateY(-2px);
+        }
+
+
+        .button-dark {
+
+            background:
+                var(--black);
+
+            color:
+                white;
+        }
+
+
+        .button-dark:hover {
+
+            background:
+                var(--blue);
+        }
+
+
+        .button-outline {
+
+            border:
+                1px solid
+                rgba(0, 0, 0, .14);
+
+            background:
+                rgba(255,255,255,.5);
+
+            color:
+                var(--black);
+        }
+
+
+        .button-outline:hover {
+
+            background:
+                white;
+        }
+
+
+        .button-light {
+
+            background:
+                white;
+
+            color:
+                black;
+        }
+
+
+        .button-light:hover {
+
+            background:
+                #e7e7e7;
+        }
+
+
+        .button-dark-outline {
+
+            border:
+                1px solid
+                rgba(255,255,255,.18);
+
+            color:
+                white;
+
+            background:
+                rgba(255,255,255,.04);
+        }
+
+
+        .button-dark-outline:hover {
+
+            background:
+                rgba(255,255,255,.10);
+        }
+
+
+
+        /* ==========================================================
+           TECHNOLOGY STRIP
+        ========================================================== */
+
+        .tech-strip {
+
+            background:
+                var(--white);
+
+            border-top:
+                1px solid
+                var(--border-light);
+
+            border-bottom:
+                1px solid
+                var(--border-light);
+
+            padding:
+                28px 0;
+        }
+
+
+        .tech-row {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                center;
+
+            gap: 30px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .tech-label {
+
+            font-size:
+                .73rem;
+
+            letter-spacing:
+                .15em;
+
+            font-weight:
+                700;
+
+            color:
+                #8a8a90;
+
+            text-transform:
+                uppercase;
+        }
+
+
+        .tech-list {
+
+            display: flex;
+
+            gap: 30px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .tech-list span {
+
+            color:
+                #55555b;
+
+            font-size:
+                .86rem;
+
+            font-weight:
+                500;
+        }
+
+
+
+        /* ==========================================================
+           COMMON SECTION TYPOGRAPHY
+        ========================================================== */
+
+        .section {
+
+            padding:
+                145px 0;
+        }
+
+
+        .section-light {
+
+            background:
+                var(--white);
+
+            color:
+                var(--text-dark);
+        }
+
+
+        .section-grey {
+
+            background:
+                var(--off-white);
+
+            color:
+                var(--text-dark);
+        }
+
+
+        .section-dark {
+
+            background:
+                var(--black);
+
+            color:
+                var(--text-light);
+        }
+
+
+        .section-heading {
+
+            max-width:
+                920px;
+
+            margin-bottom:
+                85px;
+        }
+
+
+        .eyebrow {
+
+            display: block;
+
+            margin-bottom:
+                20px;
+
+            font-size:
+                .73rem;
+
+            font-weight:
+                700;
+
+            letter-spacing:
+                .15em;
+
+            text-transform:
+                uppercase;
+
+            color:
+                var(--blue);
+        }
+
+
+        .section-dark .eyebrow {
+
+            color:
+                #54b8ff;
+        }
+
+
+        .section-heading h2 {
+
+            font-size:
+                clamp(
+                    3rem,
+                    6vw,
+                    6rem
+                );
+
+            letter-spacing:
+                -.06em;
+
+            line-height:
+                .98;
+
+            font-weight:
+                650;
+        }
+
+
+        .section-heading p {
+
+            margin-top:
+                30px;
+
+            max-width:
+                670px;
+
+            font-size:
+                1.06rem;
+
+            line-height:
+                1.75;
+
+            color:
+                var(--muted-dark);
+        }
+
+
+        .section-dark
+        .section-heading p {
+
+            color:
+                var(--muted-light);
+        }
+
+
+
+        /* ==========================================================
+           PRODUCT SHOWCASE
+        ========================================================== */
+
+        .product-showcase {
+
             display: grid;
 
             grid-template-columns:
-                repeat(auto-fit, minmax(280px, 1fr));
+                repeat(2, minmax(0, 1fr));
 
-            gap: 22px;
+            gap: 24px;
         }
 
-        .product-card {
+
+        .product {
+
             position: relative;
 
-            min-height: 340px;
+            min-height:
+                600px;
 
-            padding: 32px;
+            border-radius:
+                34px;
 
-            border-radius: 18px;
+            overflow: hidden;
+
+            padding:
+                42px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content:
+                space-between;
+
+            transition:
+                transform .5s var(--ease),
+                box-shadow .5s var(--ease);
+        }
+
+
+        .product:hover {
+
+            transform:
+                translateY(-8px);
+
+            box-shadow:
+                0 30px 70px
+                rgba(0, 0, 0, .12);
+        }
+
+
+        .product-light {
+
+            background:
+                #efefed;
+
+            color:
+                #111;
+        }
+
+
+        .product-dark {
+
+            background:
+                #08090b;
+
+            color:
+                white;
+        }
+
+
+        .product-blue {
 
             background:
                 linear-gradient(
                     145deg,
-                    rgba(255,255,255,0.07),
-                    rgba(255,255,255,0.02)
+                    #061728,
+                    #072648 52%,
+                    #102d55
                 );
 
-            border: 1px solid var(--border);
-
-            transition: 0.3s;
+            color:
+                white;
         }
 
-        .product-card:hover {
-            transform: translateY(-6px);
 
-            border-color:
-                rgba(96, 165, 250, 0.45);
+        .product-gradient {
+
+            background:
+                radial-gradient(
+                    circle at 80% 0%,
+                    rgba(77, 183, 255, .45),
+                    transparent 38%
+                ),
+                radial-gradient(
+                    circle at 5% 100%,
+                    rgba(124, 58, 237, .42),
+                    transparent 42%
+                ),
+                #090a0d;
+
+            color:
+                white;
         }
 
-        .product-icon {
-            width: 50px;
-            height: 50px;
+
+        .product-label {
+
+            font-size:
+                .72rem;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                .15em;
+
+            color:
+                #83838a;
+
+            font-weight:
+                700;
+
+            margin-bottom:
+                18px;
+        }
+
+
+        .product-dark
+        .product-label,
+
+        .product-blue
+        .product-label,
+
+        .product-gradient
+        .product-label {
+
+            color:
+                #9ea3ac;
+        }
+
+
+        .product h3 {
+
+            font-size:
+                clamp(
+                    2rem,
+                    3.4vw,
+                    3.6rem
+                );
+
+            max-width:
+                560px;
+
+            line-height:
+                1.03;
+
+            letter-spacing:
+                -.045em;
+        }
+
+
+        .product-copy {
+
+            max-width:
+                540px;
+
+            margin-top:
+                22px;
+
+            line-height:
+                1.7;
+
+            font-size:
+                .98rem;
+
+            color:
+                #696970;
+        }
+
+
+        .product-dark
+        .product-copy,
+
+        .product-blue
+        .product-copy,
+
+        .product-gradient
+        .product-copy {
+
+            color:
+                #aab0ba;
+        }
+
+
+        .product-art {
+
+            position: relative;
+
+            height:
+                260px;
+
+            margin-top:
+                50px;
+        }
+
+
+        /* AI NETWORK ART */
+
+        .ai-orb {
+
+            position: absolute;
+
+            width: 220px;
+            height: 220px;
+
+            right: 6%;
+            bottom: -10px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle at 35% 30%,
+                    #72e6ff,
+                    #1473e6 42%,
+                    #5b21b6 70%,
+                    #04050a
+                );
+
+            box-shadow:
+                0 0 90px
+                rgba(32, 134, 255, .3);
+        }
+
+
+        .ai-orb::after {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 22px;
+
+            border-radius: 50%;
+
+            border:
+                1px solid
+                rgba(255,255,255,.25);
+        }
+
+
+        .orbit {
+
+            position: absolute;
+
+            width: 330px;
+            height: 100px;
+
+            right: -15px;
+            bottom: 50px;
+
+            border:
+                1px solid
+                rgba(255,255,255,.20);
+
+            border-radius: 50%;
+
+            transform:
+                rotate(-18deg);
+        }
+
+
+
+        /* VOICE ART */
+
+        .voice-bars {
+
+            height:
+                100%;
 
             display: flex;
+
             align-items: center;
+
+            justify-content:
+                center;
+
+            gap: 8px;
+        }
+
+
+        .voice-bars span {
+
+            width: 7px;
+
+            border-radius:
+                999px;
+
+            background:
+                linear-gradient(
+                    to top,
+                    #1775e5,
+                    #23d2ff
+                );
+
+            animation:
+                pulseBars
+                1.8s ease-in-out
+                infinite;
+        }
+
+
+        .voice-bars span:nth-child(1) {
+            height: 50px;
+        }
+
+        .voice-bars span:nth-child(2) {
+            height: 110px;
+            animation-delay: .15s;
+        }
+
+        .voice-bars span:nth-child(3) {
+            height: 180px;
+            animation-delay: .30s;
+        }
+
+        .voice-bars span:nth-child(4) {
+            height: 130px;
+            animation-delay: .45s;
+        }
+
+        .voice-bars span:nth-child(5) {
+            height: 220px;
+            animation-delay: .60s;
+        }
+
+        .voice-bars span:nth-child(6) {
+            height: 140px;
+            animation-delay: .75s;
+        }
+
+        .voice-bars span:nth-child(7) {
+            height: 185px;
+            animation-delay: .90s;
+        }
+
+        .voice-bars span:nth-child(8) {
+            height: 100px;
+            animation-delay: 1.05s;
+        }
+
+        .voice-bars span:nth-child(9) {
+            height: 55px;
+            animation-delay: 1.2s;
+        }
+
+
+        @keyframes pulseBars {
+
+            0%,
+            100% {
+                transform:
+                    scaleY(.72);
+
+                opacity: .5;
+            }
+
+            50% {
+                transform:
+                    scaleY(1);
+
+                opacity: 1;
+            }
+        }
+
+
+
+        /* AUTOMATION ART */
+
+        .flow {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content:
+                center;
+
+            height: 100%;
+        }
+
+
+        .flow-node {
+
+            width: 92px;
+            height: 92px;
+
+            border-radius:
+                24px;
+
+            background:
+                white;
+
+            border:
+                1px solid
+                rgba(0,0,0,.07);
+
+            box-shadow:
+                0 15px 45px
+                rgba(0,0,0,.08);
+
+            display: flex;
+
+            align-items: center;
+
             justify-content: center;
 
-            border-radius: 12px;
+            font-size:
+                1.7rem;
+        }
+
+
+        .flow-line {
+
+            width: 70px;
+            height: 2px;
 
             background:
-                rgba(37, 99, 235, 0.15);
+                linear-gradient(
+                    90deg,
+                    #ccc,
+                    #1473e6
+                );
 
-            font-size: 1.5rem;
-
-            margin-bottom: 24px;
+            position: relative;
         }
 
-        .product-badge {
-            display: inline-block;
 
-            padding: 5px 10px;
+        .flow-line::after {
 
-            border-radius: 30px;
+            content: "";
+
+            position: absolute;
+
+            width: 8px;
+            height: 8px;
+
+            top: 50%;
+            left: 0;
+
+            border-radius:
+                50%;
 
             background:
-                rgba(16, 185, 129, 0.12);
+                var(--blue);
 
-            color: #6ee7b7;
+            transform:
+                translateY(-50%);
 
-            font-size: 0.7rem;
-
-            font-weight: 700;
-
-            margin-bottom: 15px;
+            animation:
+                flowMove
+                2s linear
+                infinite;
         }
 
-        .product-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 12px;
+
+        @keyframes flowMove {
+
+            from {
+                left: 0;
+            }
+
+            to {
+                left: calc(100% - 8px);
+            }
         }
 
-        .product-card p {
-            color: var(--muted);
-            margin-bottom: 20px;
-        }
 
-        .product-card ul {
-            list-style: none;
-        }
 
-        .product-card li {
-            color: #cbd5e1;
+        /* ANALYTICS ART */
 
-            margin-bottom: 8px;
+        .dashboard {
 
-            font-size: 0.9rem;
-        }
+            height: 220px;
 
-        .product-card li::before {
-            content: "✓";
-            color: var(--green);
-            margin-right: 8px;
-        }
+            border:
+                1px solid
+                rgba(255,255,255,.13);
 
-        /* ==========================
-           SERVICES
-        ========================== */
+            border-radius:
+                20px;
 
-        .services-grid {
+            background:
+                rgba(255,255,255,.06);
+
+            backdrop-filter:
+                blur(20px);
+
+            padding:
+                22px;
+
             display: grid;
 
             grid-template-columns:
-                repeat(auto-fit, minmax(300px, 1fr));
+                1.2fr .8fr;
 
-            gap: 20px;
+            gap: 16px;
+
+            transform:
+                perspective(1000px)
+                rotateX(5deg)
+                rotateY(-7deg);
         }
 
-        .service-card {
-            padding: 28px;
 
-            border-top:
-                1px solid var(--border);
+        .chart {
 
-            transition: 0.25s;
-        }
-
-        .service-number {
-            color: #64748b;
-
-            font-size: 0.85rem;
-
-            margin-bottom: 20px;
-        }
-
-        .service-card h3 {
-            font-size: 1.25rem;
-            margin-bottom: 12px;
-        }
-
-        .service-card p {
-            color: var(--muted);
-        }
-
-        /* ==========================
-           ABOUT
-        ========================== */
-
-        .about-grid {
-            display: grid;
-
-            grid-template-columns: 1fr 1fr;
-
-            gap: 70px;
-
-            align-items: center;
-        }
-
-        .about-content p {
-            color: var(--muted);
-            margin-bottom: 18px;
-        }
-
-        .capability-grid {
-            display: grid;
-
-            grid-template-columns: 1fr 1fr;
-
-            gap: 15px;
-        }
-
-        .capability {
-            padding: 20px;
-
-            border: 1px solid var(--border);
-
-            border-radius: 12px;
+            border-radius:
+                14px;
 
             background:
-                rgba(255,255,255,0.025);
+                linear-gradient(
+                    180deg,
+                    rgba(0,198,255,.18),
+                    rgba(0,198,255,.02)
+                );
+
+            position: relative;
+
+            overflow: hidden;
         }
 
-        .capability strong {
-            display: block;
 
-            margin-bottom: 5px;
+        .chart::after {
 
-            color: white;
+            content: "";
+
+            position: absolute;
+
+            width: 120%;
+            height: 2px;
+
+            left: -10%;
+            top: 58%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    #4fdcff,
+                    transparent
+                );
+
+            transform:
+                rotate(-12deg);
+
+            box-shadow:
+                0 0 24px
+                rgba(79,220,255,.5);
         }
 
-        .capability span {
-            color: var(--muted);
-            font-size: 0.85rem;
+
+        .mini-metrics {
+
+            display: grid;
+
+            grid-template-rows:
+                repeat(3,1fr);
+
+            gap: 10px;
         }
 
-        /* ==========================
+
+        .metric {
+
+            border-radius:
+                12px;
+
+            background:
+                rgba(255,255,255,.07);
+        }
+
+
+
+        /* ==========================================================
+           SERVICES
+        ========================================================== */
+
+        .services {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 2fr;
+        }
+
+
+        .services-label {
+
+            font-size:
+                .72rem;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                .15em;
+
+            color:
+                #73737a;
+
+            font-weight:
+                700;
+        }
+
+
+        .service-list {
+
+            border-top:
+                1px solid
+                var(--border-light);
+        }
+
+
+        .service-item {
+
+            display: grid;
+
+            grid-template-columns:
+                70px 1fr 32px;
+
+            align-items:
+                start;
+
+            gap: 25px;
+
+            padding:
+                35px 0;
+
+            border-bottom:
+                1px solid
+                var(--border-light);
+
+            transition:
+                padding .3s var(--ease);
+        }
+
+
+        .service-item:hover {
+
+            padding-left:
+                12px;
+        }
+
+
+        .service-number {
+
+            font-size:
+                .78rem;
+
+            color:
+                #99999f;
+        }
+
+
+        .service-item h3 {
+
+            font-size:
+                clamp(
+                    1.5rem,
+                    2.4vw,
+                    2.5rem
+                );
+
+            letter-spacing:
+                -.04em;
+
+            font-weight:
+                600;
+        }
+
+
+        .service-item p {
+
+            margin-top:
+                10px;
+
+            max-width:
+                720px;
+
+            color:
+                var(--muted-dark);
+
+            line-height:
+                1.65;
+
+            font-size:
+                .94rem;
+        }
+
+
+        .service-arrow {
+
+            color:
+                #999;
+
+            font-size:
+                1.35rem;
+
+            transition:
+                transform .3s ease;
+        }
+
+
+        .service-item:hover
+        .service-arrow {
+
+            transform:
+                translateX(5px);
+        }
+
+
+
+        /* ==========================================================
+           PHILOSOPHY / ABOUT
+        ========================================================== */
+
+        .philosophy {
+
+            display: grid;
+
+            grid-template-columns:
+                1.15fr .85fr;
+
+            gap:
+                100px;
+
+            align-items:
+                end;
+        }
+
+
+        .philosophy h2 {
+
+            font-size:
+                clamp(
+                    3.5rem,
+                    7vw,
+                    7.5rem
+                );
+
+            line-height:
+                .92;
+
+            letter-spacing:
+                -.07em;
+
+            max-width:
+                850px;
+        }
+
+
+        .philosophy-copy {
+
+            padding-bottom:
+                10px;
+        }
+
+
+        .philosophy-copy p {
+
+            color:
+                var(--muted-light);
+
+            line-height:
+                1.75;
+
+            margin-bottom:
+                22px;
+        }
+
+
+
+        /* ==========================================================
            PROCESS
-        ========================== */
+        ========================================================== */
 
         .process-grid {
+
             display: grid;
 
             grid-template-columns:
                 repeat(4, 1fr);
 
-            gap: 20px;
+            border-top:
+                1px solid
+                var(--border-light);
         }
 
-        .process-step {
-            border-left:
-                2px solid var(--primary);
 
-            padding-left: 22px;
+        .process-card {
+
+            min-height:
+                320px;
+
+            padding:
+                32px 28px;
+
+            border-right:
+                1px solid
+                var(--border-light);
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content:
+                space-between;
         }
 
-        .process-step span {
-            color: var(--primary-light);
 
-            font-size: 0.8rem;
+        .process-card:last-child {
 
-            font-weight: 700;
+            border-right: 0;
         }
 
-        .process-step h3 {
-            margin: 10px 0;
+
+        .process-number {
+
+            font-size:
+                .72rem;
+
+            color:
+                #a0a0a5;
+
+            letter-spacing:
+                .12em;
         }
 
-        .process-step p {
-            color: var(--muted);
-            font-size: 0.9rem;
+
+        .process-card h3 {
+
+            font-size:
+                1.65rem;
+
+            letter-spacing:
+                -.035em;
+
+            margin-bottom:
+                14px;
         }
 
-        /* ==========================
+
+        .process-card p {
+
+            color:
+                var(--muted-dark);
+
+            line-height:
+                1.65;
+
+            font-size:
+                .92rem;
+        }
+
+
+
+        /* ==========================================================
            CTA
-        ========================== */
+        ========================================================== */
 
-        .cta {
-            margin: 60px auto 100px;
-
-            padding: 70px 40px;
-
-            border-radius: 24px;
-
-            text-align: center;
+        .cta-section {
 
             background:
-                radial-gradient(
-                    circle at top left,
-                    rgba(124,58,237,.4),
-                    transparent 35%
-                ),
-                linear-gradient(
-                    135deg,
-                    #14213d,
-                    #0a1424
+                var(--black);
+
+            color:
+                white;
+
+            padding:
+                170px 0;
+        }
+
+
+        .cta-wrapper {
+
+            max-width:
+                1000px;
+        }
+
+
+        .cta-wrapper h2 {
+
+            font-size:
+                clamp(
+                    4rem,
+                    8vw,
+                    8rem
                 );
 
-            border: 1px solid var(--border);
+            line-height:
+                .92;
+
+            letter-spacing:
+                -.075em;
+
+            font-weight:
+                650;
         }
 
-        .cta h2 {
-            font-size: clamp(2rem, 4vw, 3.3rem);
 
-            margin-bottom: 18px;
+        .cta-wrapper p {
+
+            max-width:
+                650px;
+
+            margin:
+                35px 0;
+
+            color:
+                var(--muted-light);
+
+            line-height:
+                1.7;
+
+            font-size:
+                1.04rem;
         }
 
-        .cta p {
-            max-width: 650px;
 
-            margin: 0 auto 30px;
 
-            color: var(--muted);
-        }
-
-        /* ==========================
+        /* ==========================================================
            CONTACT
-        ========================== */
+        ========================================================== */
 
-        .contact-container {
-            max-width: 850px;
-            margin: auto;
-            text-align: center;
+        .contact-section {
+
+            background:
+                var(--off-white);
+
+            padding:
+                130px 0;
         }
 
-        .contact-options {
+
+        .contact-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                1.2fr .8fr;
+
+            gap:
+                100px;
+
+            align-items:
+                end;
+        }
+
+
+        .contact-grid h2 {
+
+            font-size:
+                clamp(
+                    3rem,
+                    5vw,
+                    5.5rem
+                );
+
+            line-height:
+                .98;
+
+            letter-spacing:
+                -.06em;
+        }
+
+
+        .contact-copy p {
+
+            color:
+                var(--muted-dark);
+
+            line-height:
+                1.7;
+
+            margin-bottom:
+                25px;
+        }
+
+
+        .contact-links {
+
             display: flex;
 
-            justify-content: center;
-
-            gap: 15px;
-
-            flex-wrap: wrap;
-
-            margin-top: 30px;
-        }
-
-        /* ==========================
-           FOOTER
-        ========================== */
-
-        footer {
-            padding: 35px 0;
+            flex-direction: column;
 
             border-top:
-                1px solid var(--border);
-
-            color: #64748b;
-
-            font-size: 0.85rem;
+                1px solid
+                var(--border-light);
         }
 
-        .footer-container {
+
+        .contact-link {
+
             display: flex;
 
-            justify-content: space-between;
+            justify-content:
+                space-between;
 
-            align-items: center;
+            padding:
+                18px 0;
+
+            border-bottom:
+                1px solid
+                var(--border-light);
+
+            font-size:
+                .95rem;
+
+            transition:
+                padding .25s ease;
+        }
+
+
+        .contact-link:hover {
+
+            padding-left:
+                10px;
+
+            color:
+                var(--blue);
+        }
+
+
+
+        /* ==========================================================
+           FOOTER
+        ========================================================== */
+
+        footer {
+
+            background:
+                var(--off-white);
+
+            border-top:
+                1px solid
+                var(--border-light);
+
+            padding:
+                34px 0 45px;
+        }
+
+
+        .footer-inner {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            gap: 30px;
 
             flex-wrap: wrap;
 
-            gap: 20px;
+            font-size:
+                .78rem;
+
+            color:
+                #85858b;
         }
 
-        /* ==========================
-           MOBILE
-        ========================== */
 
-        @media (max-width: 850px) {
 
-            .menu-button {
-                display: block;
-            }
+        /* ==========================================================
+           SCROLL REVEAL
+        ========================================================== */
+
+        .reveal {
+
+            opacity: 0;
+
+            transform:
+                translateY(30px);
+
+            transition:
+                opacity .9s var(--ease),
+                transform .9s var(--ease);
+        }
+
+
+        .reveal.visible {
+
+            opacity: 1;
+
+            transform:
+                translateY(0);
+        }
+
+
+
+        /* ==========================================================
+           RESPONSIVE
+        ========================================================== */
+
+        @media
+        (max-width: 980px) {
+
 
             .nav-links {
+
                 display: none;
 
                 position: absolute;
 
                 top: 76px;
+
                 left: 0;
 
                 width: 100%;
 
-                background: #081322;
+                padding:
+                    30px;
 
-                padding: 25px;
+                flex-direction:
+                    column;
 
-                flex-direction: column;
+                align-items:
+                    flex-start;
+
+                background:
+                    rgba(
+                        255,
+                        255,
+                        255,
+                        .97
+                    );
 
                 border-bottom:
-                    1px solid var(--border);
+                    1px solid
+                    var(--border-light);
             }
+
 
             .nav-links.active {
                 display: flex;
             }
 
-            .hero h1 {
-                letter-spacing: -2px;
+
+            .mobile-menu-button {
+                display: block;
             }
 
-            .about-grid {
-                grid-template-columns: 1fr;
+
+            .hero-bottom {
+
+                flex-direction:
+                    column;
+
+                align-items:
+                    flex-start;
             }
+
+
+            .product-showcase {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .services {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .services-label {
+
+                margin-bottom:
+                    35px;
+            }
+
+
+            .philosophy {
+
+                grid-template-columns:
+                    1fr;
+
+                gap: 60px;
+            }
+
 
             .process-grid {
-                grid-template-columns: 1fr 1fr;
+
+                grid-template-columns:
+                    1fr 1fr;
+            }
+
+
+            .contact-grid {
+
+                grid-template-columns:
+                    1fr;
+
+                gap: 60px;
             }
         }
 
-        @media (max-width: 550px) {
+
+
+        @media
+        (max-width: 640px) {
+
+
+            .container,
+            .nav-inner {
+
+                width:
+                    calc(
+                        100% - 32px
+                    );
+            }
+
+
+            .brand-logo {
+
+                width: 37px;
+                height: 37px;
+            }
+
+
+            .brand-name {
+
+                font-size:
+                    .92rem;
+            }
+
+
+            .brand-name span {
+
+                display: none;
+            }
+
 
             .hero {
-                min-height: auto;
-                padding: 150px 0 100px;
+
+                min-height:
+                    auto;
             }
+
+
+            .hero-content {
+
+                padding:
+                    95px 0 75px;
+            }
+
 
             .hero h1 {
-                font-size: 3rem;
+
+                font-size:
+                    clamp(
+                        3.5rem,
+                        18vw,
+                        5.5rem
+                    );
             }
 
-            .process-grid {
-                grid-template-columns: 1fr;
+
+            .hero-bottom {
+
+                margin-top:
+                    45px;
             }
 
-            .capability-grid {
-                grid-template-columns: 1fr;
-            }
 
             .section {
-                padding: 80px 0;
+
+                padding:
+                    95px 0;
             }
 
-            .cta {
-                padding: 50px 25px;
+
+            .section-heading {
+
+                margin-bottom:
+                    55px;
+            }
+
+
+            .product {
+
+                min-height:
+                    520px;
+
+                padding:
+                    28px;
+
+                border-radius:
+                    24px;
+            }
+
+
+            .product-art {
+
+                height:
+                    210px;
+            }
+
+
+            .process-grid {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .process-card {
+
+                min-height:
+                    240px;
+
+                border-right: 0;
+
+                border-bottom:
+                    1px solid
+                    var(--border-light);
+            }
+
+
+            .service-item {
+
+                grid-template-columns:
+                    45px 1fr;
+            }
+
+
+            .service-arrow {
+
+                display: none;
+            }
+
+
+            .tech-row {
+
+                align-items:
+                    flex-start;
+            }
+
+
+            .tech-list {
+
+                gap:
+                    16px 22px;
+            }
+
+
+            .cta-section {
+
+                padding:
+                    110px 0;
+            }
+
+
+            .hero-actions {
+
+                width: 100%;
+            }
+
+
+            .hero-actions
+            .button {
+
+                width: 100%;
+            }
+        }
+
+
+        @media
+        (prefers-reduced-motion: reduce) {
+
+            * {
+
+                scroll-behavior:
+                    auto !important;
+
+                animation-duration:
+                    .001ms !important;
+
+                animation-iteration-count:
+                    1 !important;
+
+                transition-duration:
+                    .001ms !important;
             }
         }
 
     </style>
+
 </head>
 
 
 <body>
 
-<!-- ==========================
+
+<!-- ==========================================================
      NAVIGATION
-========================== -->
+========================================================== -->
 
-<nav>
+<nav class="navbar"
+     id="navbar">
 
-    <div class="nav-container">
+    <div class="nav-inner">
 
-        <a href="#" class="brand">
+        <a href="#"
+           class="brand">
 
-            <img
-                src="ACI logo NEW.png"
-                alt="ArunodayCare Logo">
+            <!--
+            IMPORTANT:
+            Use the standalone icon,
+            NOT the horizontal logo with text.
+            -->
+
+            <img src="ACI logo NEW.png"
+                 alt="ArunodayCare Technologies"
+                 class="brand-logo">
 
             <div class="brand-name">
+
                 ArunodayCare
-                <span>Technologies</span>
+
+                <span>
+                    Technologies
+                </span>
+
             </div>
 
         </a>
 
+
         <button
-            class="menu-button"
-            onclick="toggleMenu()"
-            aria-label="Open menu">
+            class="mobile-menu-button"
+            id="menuButton"
+            aria-label="Open navigation menu">
 
             ☰
 
         </button>
 
-        <ul
-            class="nav-links"
+
+        <ul class="nav-links"
             id="navLinks">
 
             <li>
@@ -812,17 +2316,22 @@
             </li>
 
             <li>
+                <a href="#approach">
+                    Approach
+                </a>
+            </li>
+
+            <li>
                 <a href="#about">
                     About
                 </a>
             </li>
 
             <li>
-                <a
-                    href="#contact"
-                    class="nav-cta">
+                <a href="#contact"
+                   class="nav-button">
 
-                    Let's Talk
+                    Start a Project
 
                 </a>
             </li>
@@ -835,58 +2344,77 @@
 
 
 
-<!-- ==========================
+<!-- ==========================================================
      HERO
-========================== -->
+========================================================== -->
 
-<section class="hero">
+<header class="hero">
 
-    <div class="container">
+    <div class="container hero-content">
 
-        <div class="hero-content">
 
-            <div class="eyebrow">
+        <div class="hero-kicker reveal">
 
-                AI • DATA • ANALYTICS • AUTOMATION
+            AI · DATA · ANALYTICS · AUTOMATION
 
-            </div>
+        </div>
 
-            <h1>
 
-                We build technology that
+        <h1 class="reveal">
 
-                <span class="gradient-text">
-                    solves real business problems.
-                </span>
+            Technology that
 
-            </h1>
+            <br>
 
-            <p class="hero-description">
+            moves business
 
-                ArunodayCare Technologies develops practical AI agents,
-                data platforms, business intelligence solutions and
-                workflow automation that help organizations make better
-                decisions and operate more efficiently.
+            <span class="gradient-word">
+
+                forward.
+
+            </span>
+
+        </h1>
+
+
+        <div class="hero-bottom reveal">
+
+
+            <p class="hero-copy">
+
+                We design intelligent systems that connect
+                data, artificial intelligence and automation
+                to solve real operational problems.
+
+                From enterprise analytics to autonomous AI
+                agents, we turn complex ideas into practical
+                technology.
 
             </p>
 
-            <div class="hero-buttons">
 
-                <a
-                    href="#products"
-                    class="button button-primary">
+            <div class="hero-actions">
 
-                    Explore Our Products →
+
+                <a href="#products"
+                   class="button button-dark">
+
+                    Explore products
+
+                    <span>
+                        ↗
+                    </span>
+
+                </a>
+
+
+                <a href="#contact"
+                   class="button button-outline">
+
+                    Discuss a project
 
                 </a>
 
-                <a
-                    href="#contact"
-                    class="button button-secondary">
-
-                    Discuss a Project
-
-                </a>
 
             </div>
 
@@ -894,49 +2422,56 @@
 
     </div>
 
-</section>
+</header>
 
 
 
-<!-- ==========================
-     TECHNOLOGY
-========================== -->
+<!-- ==========================================================
+     TECHNOLOGY STRIP
+========================================================== -->
 
-<div class="technology-bar">
+<div class="tech-strip">
 
-    <div class="container technology-list">
+    <div class="container tech-row">
 
-        <span class="tech-pill">
-            Microsoft Fabric
-        </span>
+        <div class="tech-label">
 
-        <span class="tech-pill">
-            Power BI
-        </span>
+            Built with modern technology
 
-        <span class="tech-pill">
-            Azure AI
-        </span>
+        </div>
 
-        <span class="tech-pill">
-            SQL
-        </span>
 
-        <span class="tech-pill">
-            Python
-        </span>
+        <div class="tech-list">
 
-        <span class="tech-pill">
-            Power Automate
-        </span>
+            <span>
+                Microsoft Fabric
+            </span>
 
-        <span class="tech-pill">
-            APIs
-        </span>
+            <span>
+                Power BI
+            </span>
 
-        <span class="tech-pill">
-            AI Agents
-        </span>
+            <span>
+                Azure AI
+            </span>
+
+            <span>
+                SQL
+            </span>
+
+            <span>
+                Python
+            </span>
+
+            <span>
+                Power Automate
+            </span>
+
+            <span>
+                APIs
+            </span>
+
+        </div>
 
     </div>
 
@@ -944,228 +2479,334 @@
 
 
 
-<!-- ==========================
+<!-- ==========================================================
      PRODUCTS
-========================== -->
+========================================================== -->
 
 <section
     id="products"
-    class="section">
+    class="section section-light">
 
     <div class="container">
 
-        <div class="section-header">
 
-            <div class="section-label">
+        <div class="section-heading reveal">
+
+
+            <span class="eyebrow">
+
                 Products
-            </div>
 
-            <h2 class="section-title">
-                Technology we've built.
+            </span>
+
+
+            <h2>
+
+                Built to do real work.
+
             </h2>
 
-            <p class="section-description">
 
-                Reusable solutions designed around real operational
-                problems — not technology for the sake of technology.
+            <p>
+
+                Practical systems developed around
+                real business problems — designed
+                to reduce manual effort, make data
+                accessible and help people make
+                better decisions.
 
             </p>
 
         </div>
 
 
-        <div class="products-grid">
+
+        <div class="product-showcase">
 
 
-            <!-- PRODUCT 1 -->
 
-            <div class="product-card">
+            <!-- ======================
+                 PRODUCT 1
+            ====================== -->
 
-                <div class="product-icon">
-                    🧠
+            <article
+                class="product product-dark reveal">
+
+
+                <div>
+
+
+                    <div class="product-label">
+
+                        Enterprise Intelligence
+
+                    </div>
+
+
+                    <h3>
+
+                        Business Intelligence
+                        AI Agent
+
+                    </h3>
+
+
+                    <p class="product-copy">
+
+                        Give business users a conversational
+                        interface to governed enterprise data.
+
+                        Ask complex questions, investigate
+                        performance and drill into underlying
+                        results using natural language.
+
+                    </p>
+
+
                 </div>
 
-                <div class="product-badge">
-                    AI SOLUTION
+
+                <div class="product-art">
+
+
+                    <div class="ai-orb">
+
+                    </div>
+
+
+                    <div class="orbit">
+
+                    </div>
+
+
                 </div>
 
-                <h3>
-                    Business Intelligence AI Agent
-                </h3>
 
-                <p>
-
-                    A conversational analytics agent that connects
-                    business users directly with governed enterprise
-                    data.
-
-                </p>
-
-                <ul>
-
-                    <li>
-                        Ask business questions in natural language
-                    </li>
-
-                    <li>
-                        Investigate KPIs and performance trends
-                    </li>
-
-                    <li>
-                        Query governed business data
-                    </li>
-
-                    <li>
-                        Drill into underlying results
-                    </li>
-
-                </ul>
-
-            </div>
+            </article>
 
 
 
-            <!-- PRODUCT 2 -->
+            <!-- ======================
+                 PRODUCT 2
+            ====================== -->
 
-            <div class="product-card">
+            <article
+                class="product product-blue reveal">
 
-                <div class="product-icon">
-                    📞
+
+                <div>
+
+
+                    <div class="product-label">
+
+                        Conversational Automation
+
+                    </div>
+
+
+                    <h3>
+
+                        AI Voice
+                        Calling Agent
+
+                    </h3>
+
+
+                    <p class="product-copy">
+
+                        AI-powered calling technology
+                        capable of conducting structured
+                        conversations, collecting information,
+                        completing workflows and returning
+                        actionable results.
+
+                    </p>
+
+
                 </div>
 
-                <div class="product-badge">
-                    AI AUTOMATION
+
+                <div class="product-art">
+
+
+                    <div class="voice-bars">
+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                    </div>
+
+
                 </div>
 
-                <h3>
-                    AI Voice Calling Agent
-                </h3>
 
-                <p>
-
-                    An AI-powered calling platform capable of conducting
-                    structured outbound conversations and returning
-                    actionable results.
-
-                </p>
-
-                <ul>
-
-                    <li>
-                        Automated outbound calls
-                    </li>
-
-                    <li>
-                        Natural AI conversations
-                    </li>
-
-                    <li>
-                        Call transcripts and summaries
-                    </li>
-
-                    <li>
-                        Booking and follow-up workflows
-                    </li>
-
-                </ul>
-
-            </div>
+            </article>
 
 
 
-            <!-- PRODUCT 3 -->
+            <!-- ======================
+                 PRODUCT 3
+            ====================== -->
 
-            <div class="product-card">
+            <article
+                class="product product-light reveal">
 
-                <div class="product-icon">
-                    ⚡
+
+                <div>
+
+
+                    <div class="product-label">
+
+                        Intelligent Workflows
+
+                    </div>
+
+
+                    <h3>
+
+                        Smart Request
+                        Automation
+
+                    </h3>
+
+
+                    <p class="product-copy">
+
+                        Transform email requests and
+                        operational tasks into structured,
+                        automated workflows using AI,
+                        APIs and business rules.
+
+                    </p>
+
+
                 </div>
 
-                <div class="product-badge">
-                    WORKFLOW AUTOMATION
+
+                <div class="product-art">
+
+
+                    <div class="flow">
+
+
+                        <div class="flow-node">
+
+                            ✉
+
+                        </div>
+
+
+                        <div class="flow-line">
+
+                        </div>
+
+
+                        <div class="flow-node">
+
+                            AI
+
+                        </div>
+
+
+                        <div class="flow-line">
+
+                        </div>
+
+
+                        <div class="flow-node">
+
+                            ✓
+
+                        </div>
+
+
+                    </div>
+
+
                 </div>
 
-                <h3>
-                    Smart Request Automation
-                </h3>
 
-                <p>
-
-                    AI-driven intake and workflow automation that turns
-                    emails and business requests into structured,
-                    trackable work.
-
-                </p>
-
-                <ul>
-
-                    <li>
-                        AI request classification
-                    </li>
-
-                    <li>
-                        Automatic work-item creation
-                    </li>
-
-                    <li>
-                        Duplicate detection
-                    </li>
-
-                    <li>
-                        Automated acknowledgement
-                    </li>
-
-                </ul>
-
-            </div>
+            </article>
 
 
 
-            <!-- PRODUCT 4 -->
+            <!-- ======================
+                 PRODUCT 4
+            ====================== -->
 
-            <div class="product-card">
+            <article
+                class="product product-gradient reveal">
 
-                <div class="product-icon">
-                    📊
+
+                <div>
+
+
+                    <div class="product-label">
+
+                        Modern Analytics
+
+                    </div>
+
+
+                    <h3>
+
+                        Enterprise
+                        Analytics Platform
+
+                    </h3>
+
+
+                    <p class="product-copy">
+
+                        Modern cloud analytics architecture
+                        connecting operational systems,
+                        data transformation, governed
+                        semantic models and interactive
+                        business intelligence.
+
+                    </p>
+
+
                 </div>
 
-                <div class="product-badge">
-                    ANALYTICS PLATFORM
+
+                <div class="product-art">
+
+
+                    <div class="dashboard">
+
+
+                        <div class="chart">
+
+                        </div>
+
+
+                        <div class="mini-metrics">
+
+                            <div class="metric"></div>
+
+                            <div class="metric"></div>
+
+                            <div class="metric"></div>
+
+                        </div>
+
+
+                    </div>
+
+
                 </div>
 
-                <h3>
-                    Modern Analytics Platform
-                </h3>
 
-                <p>
+            </article>
 
-                    Complete Microsoft data and analytics architecture
-                    from operational systems through reporting and
-                    executive dashboards.
-
-                </p>
-
-                <ul>
-
-                    <li>
-                        Microsoft Fabric architecture
-                    </li>
-
-                    <li>
-                        SQL transformation layer
-                    </li>
-
-                    <li>
-                        Semantic data models
-                    </li>
-
-                    <li>
-                        Power BI reporting
-                    </li>
-
-                </ul>
-
-            </div>
 
         </div>
 
@@ -1175,303 +2816,70 @@
 
 
 
-<!-- ==========================
-     SERVICES
-========================== -->
-
-<section
-    id="services"
-    class="section section-dark">
-
-    <div class="container">
-
-        <div class="section-header">
-
-            <div class="section-label">
-                Services
-            </div>
-
-            <h2 class="section-title">
-                From raw data to intelligent systems.
-            </h2>
-
-            <p class="section-description">
-
-                We help organizations design, build and improve
-                technology solutions across data, analytics,
-                automation and artificial intelligence.
-
-            </p>
-
-        </div>
-
-
-        <div class="services-grid">
-
-
-            <div class="service-card">
-
-                <div class="service-number">
-                    01
-                </div>
-
-                <h3>
-                    Power BI Development
-                </h3>
-
-                <p>
-
-                    Executive dashboards, operational reporting,
-                    semantic models, DAX optimization, security,
-                    deployment and performance improvement.
-
-                </p>
-
-            </div>
-
-
-            <div class="service-card">
-
-                <div class="service-number">
-                    02
-                </div>
-
-                <h3>
-                    Microsoft Fabric & Data Engineering
-                </h3>
-
-                <p>
-
-                    Lakehouse and warehouse architecture, SQL
-                    transformation, data modelling, pipelines,
-                    notebooks and production-ready analytics platforms.
-
-                </p>
-
-            </div>
-
-
-            <div class="service-card">
-
-                <div class="service-number">
-                    03
-                </div>
-
-                <h3>
-                    AI Agent Development
-                </h3>
-
-                <p>
-
-                    Custom AI agents that use enterprise data,
-                    business tools and knowledge sources to answer
-                    questions and perform business tasks.
-
-                </p>
-
-            </div>
-
-
-            <div class="service-card">
-
-                <div class="service-number">
-                    04
-                </div>
-
-                <h3>
-                    Business Process Automation
-                </h3>
-
-                <p>
-
-                    Automate repetitive processes using Power Automate,
-                    APIs, AI models and custom integrations.
-
-                </p>
-
-            </div>
-
-
-            <div class="service-card">
-
-                <div class="service-number">
-                    05
-                </div>
-
-                <h3>
-                    SQL & Data Modelling
-                </h3>
-
-                <p>
-
-                    Production-ready SQL logic, star schemas,
-                    transformation layers, performance optimization
-                    and governed business metrics.
-
-                </p>
-
-            </div>
-
-
-            <div class="service-card">
-
-                <div class="service-number">
-                    06
-                </div>
-
-                <h3>
-                    Technology Consulting
-                </h3>
-
-                <p>
-
-                    Architecture reviews, modernization planning,
-                    proof-of-concepts and technology strategy for
-                    businesses adopting Microsoft data and AI tools.
-
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- ==========================
-     ABOUT
-========================== -->
+<!-- ==========================================================
+     ABOUT / PHILOSOPHY
+========================================================== -->
 
 <section
     id="about"
-    class="section">
+    class="section section-dark">
 
-    <div class="container about-grid">
+    <div class="container philosophy">
 
 
-        <div class="about-content">
+        <div class="reveal">
 
-            <div class="section-label">
-                About
-            </div>
 
-            <h2 class="section-title">
+            <span class="eyebrow">
 
-                Practical technology.
-                Built around the business.
+                Our philosophy
+
+            </span>
+
+
+            <h2>
+
+                Business first.
+
+                <br>
+
+                Technology second.
 
             </h2>
 
-            <p>
-
-                ArunodayCare Technologies focuses on solving real
-                operational problems using modern data, analytics,
-                automation and artificial intelligence.
-
-            </p>
-
-            <p>
-
-                Our approach starts with understanding the business
-                process and the data behind it. Technology is then
-                designed around that problem instead of forcing the
-                business into a predefined software solution.
-
-            </p>
-
-            <p>
-
-                Solutions can range from a single Power BI dashboard
-                to a complete enterprise analytics platform or a
-                custom AI agent integrated with internal systems.
-
-            </p>
 
         </div>
 
 
-        <div class="capability-grid">
+        <div class="philosophy-copy reveal">
 
 
-            <div class="capability">
+            <p>
 
-                <strong>
-                    Data
-                </strong>
+                The best technology starts with
+                understanding the business problem.
 
-                <span>
-                    SQL, Fabric, modelling and transformation
-                </span>
-
-            </div>
+            </p>
 
 
-            <div class="capability">
+            <p>
 
-                <strong>
-                    Analytics
-                </strong>
+                We focus first on the process,
+                the data and the outcome that matters.
+                Only then do we decide which technology
+                should solve it.
 
-                <span>
-                    Power BI, KPIs and semantic models
-                </span>
-
-            </div>
+            </p>
 
 
-            <div class="capability">
+            <p>
 
-                <strong>
-                    Artificial Intelligence
-                </strong>
+                That approach allows us to build
+                systems that are practical,
+                understandable and designed to evolve
+                with the organizations that use them.
 
-                <span>
-                    AI agents and enterprise AI
-                </span>
-
-            </div>
-
-
-            <div class="capability">
-
-                <strong>
-                    Automation
-                </strong>
-
-                <span>
-                    Power Automate, APIs and workflows
-                </span>
-
-            </div>
-
-
-            <div class="capability">
-
-                <strong>
-                    Development
-                </strong>
-
-                <span>
-                    Python and custom integrations
-                </span>
-
-            </div>
-
-
-            <div class="capability">
-
-                <strong>
-                    Architecture
-                </strong>
-
-                <span>
-                    Scalable cloud data solutions
-                </span>
-
-            </div>
+            </p>
 
 
         </div>
@@ -1482,106 +2890,486 @@
 
 
 
-<!-- ==========================
-     PROCESS
-========================== -->
+<!-- ==========================================================
+     SERVICES
+========================================================== -->
 
-<section class="section section-dark">
+<section
+    id="services"
+    class="section section-grey">
 
     <div class="container">
 
-        <div class="section-header">
 
-            <div class="section-label">
-                How We Work
-            </div>
+        <div class="section-heading reveal">
 
-            <h2 class="section-title">
-                From business problem to working solution.
+
+            <span class="eyebrow">
+
+                Capabilities
+
+            </span>
+
+
+            <h2>
+
+                From data foundation
+                to intelligent systems.
+
             </h2>
 
+
         </div>
+
+
+
+        <div class="services">
+
+
+            <div class="services-label reveal">
+
+                Services
+
+            </div>
+
+
+            <div class="service-list">
+
+
+
+                <div class="service-item reveal">
+
+
+                    <div class="service-number">
+
+                        01
+
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+
+                            AI Agent Development
+
+                        </h3>
+
+                        <p>
+
+                            Custom AI agents connected to
+                            business data, enterprise tools,
+                            APIs and governed knowledge
+                            sources.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="service-arrow">
+
+                        →
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="service-item reveal">
+
+
+                    <div class="service-number">
+
+                        02
+
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+
+                            Power BI & Analytics
+
+                        </h3>
+
+                        <p>
+
+                            Executive dashboards,
+                            operational reporting,
+                            semantic modelling,
+                            advanced DAX and scalable
+                            enterprise analytics.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="service-arrow">
+
+                        →
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="service-item reveal">
+
+
+                    <div class="service-number">
+
+                        03
+
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+
+                            Microsoft Fabric
+
+                        </h3>
+
+                        <p>
+
+                            Lakehouse, warehouse,
+                            transformation pipelines,
+                            medallion architecture,
+                            notebooks and deployment
+                            strategy.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="service-arrow">
+
+                        →
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="service-item reveal">
+
+
+                    <div class="service-number">
+
+                        04
+
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+
+                            Data Engineering & SQL
+
+                        </h3>
+
+                        <p>
+
+                            High-performance SQL,
+                            dimensional modelling,
+                            transformation layers,
+                            governed metrics and
+                            production-ready data models.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="service-arrow">
+
+                        →
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="service-item reveal">
+
+
+                    <div class="service-number">
+
+                        05
+
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+
+                            Intelligent Automation
+
+                        </h3>
+
+                        <p>
+
+                            Power Automate, APIs,
+                            AI classification,
+                            event-driven workflows
+                            and process automation.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="service-arrow">
+
+                        →
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="service-item reveal">
+
+
+                    <div class="service-number">
+
+                        06
+
+                    </div>
+
+
+                    <div>
+
+                        <h3>
+
+                            Technology Consulting
+
+                        </h3>
+
+                        <p>
+
+                            Architecture reviews,
+                            modernization planning,
+                            technical strategy and
+                            proof-of-concept development.
+
+                        </p>
+
+                    </div>
+
+
+                    <div class="service-arrow">
+
+                        →
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ==========================================================
+     PROCESS
+========================================================== -->
+
+<section
+    id="approach"
+    class="section section-light">
+
+    <div class="container">
+
+
+        <div class="section-heading reveal">
+
+
+            <span class="eyebrow">
+
+                Approach
+
+            </span>
+
+
+            <h2>
+
+                Simplicity is engineered.
+
+            </h2>
+
+
+            <p>
+
+                Complex technology should feel
+                simple to the people using it.
+
+            </p>
+
+
+        </div>
+
 
 
         <div class="process-grid">
 
 
-            <div class="process-step">
+            <div class="process-card reveal">
 
-                <span>
-                    STEP 01
-                </span>
 
-                <h3>
-                    Understand
-                </h3>
+                <div class="process-number">
 
-                <p>
+                    01 / DISCOVER
 
-                    Understand the business problem, current process
-                    and desired outcome.
+                </div>
 
-                </p>
+
+                <div>
+
+                    <h3>
+
+                        Understand
+
+                    </h3>
+
+
+                    <p>
+
+                        Understand the business,
+                        workflow, constraints,
+                        users and desired outcome.
+
+                    </p>
+
+                </div>
+
 
             </div>
 
 
-            <div class="process-step">
 
-                <span>
-                    STEP 02
-                </span>
+            <div class="process-card reveal">
 
-                <h3>
-                    Design
-                </h3>
 
-                <p>
+                <div class="process-number">
 
-                    Design the architecture, data model and technical
-                    approach.
+                    02 / DESIGN
 
-                </p>
+                </div>
+
+
+                <div>
+
+                    <h3>
+
+                        Architect
+
+                    </h3>
+
+
+                    <p>
+
+                        Design the data,
+                        application and integration
+                        architecture around the
+                        business requirement.
+
+                    </p>
+
+                </div>
+
 
             </div>
 
 
-            <div class="process-step">
 
-                <span>
-                    STEP 03
-                </span>
+            <div class="process-card reveal">
 
-                <h3>
-                    Build
-                </h3>
 
-                <p>
+                <div class="process-number">
 
-                    Develop and test the solution using modern cloud
-                    technologies.
+                    03 / BUILD
 
-                </p>
+                </div>
+
+
+                <div>
+
+                    <h3>
+
+                        Develop
+
+                    </h3>
+
+
+                    <p>
+
+                        Build, integrate and test
+                        the solution using modern
+                        cloud technologies.
+
+                    </p>
+
+                </div>
+
 
             </div>
 
 
-            <div class="process-step">
 
-                <span>
-                    STEP 04
-                </span>
+            <div class="process-card reveal">
 
-                <h3>
-                    Improve
-                </h3>
 
-                <p>
+                <div class="process-number">
 
-                    Measure results and continuously improve the
-                    solution as the business evolves.
+                    04 / EVOLVE
 
-                </p>
+                </div>
+
+
+                <div>
+
+                    <h3>
+
+                        Improve
+
+                    </h3>
+
+
+                    <p>
+
+                        Measure outcomes and
+                        continuously improve as
+                        business requirements evolve.
+
+                    </p>
+
+                </div>
+
 
             </div>
 
@@ -1594,101 +3382,180 @@
 
 
 
-<!-- ==========================
-     CTA
-========================== -->
+<!-- ==========================================================
+     CALL TO ACTION
+========================================================== -->
 
-<div class="container">
+<section class="cta-section">
 
-    <div class="cta">
+    <div class="container">
 
-        <div class="section-label">
-            HAVE AN IDEA?
+
+        <div class="cta-wrapper reveal">
+
+
+            <span class="eyebrow">
+
+                Have an idea?
+
+            </span>
+
+
+            <h2>
+
+                Let's build
+                what comes next.
+
+            </h2>
+
+
+            <p>
+
+                Whether you need an AI agent,
+                business intelligence platform,
+                intelligent workflow or custom
+                data solution, we can help turn
+                the idea into a working system.
+
+            </p>
+
+
+            <div style="
+                display:flex;
+                flex-wrap:wrap;
+                gap:12px;
+            ">
+
+
+                <a href="#contact"
+                   class="button button-light">
+
+                    Start a conversation
+
+                    <span>
+                        ↗
+                    </span>
+
+                </a>
+
+
+                <a href="#products"
+                   class="button button-dark-outline">
+
+                    Explore products
+
+                </a>
+
+
+            </div>
+
+
         </div>
-
-        <h2>
-            Let's turn it into a working solution.
-        </h2>
-
-        <p>
-
-            Whether you need a Power BI solution, an AI agent,
-            workflow automation or a complete data platform,
-            we can help design and build it.
-
-        </p>
-
-        <a
-            href="#contact"
-            class="button button-primary">
-
-            Start a Conversation →
-
-        </a>
 
     </div>
 
-</div>
+</section>
 
 
 
-<!-- ==========================
+<!-- ==========================================================
      CONTACT
-========================== -->
+========================================================== -->
 
 <section
     id="contact"
-    class="section">
+    class="contact-section">
 
-    <div class="container contact-container">
+    <div class="container contact-grid">
 
-        <div class="section-label">
-            Contact
+
+        <div class="reveal">
+
+
+            <span class="eyebrow">
+
+                Contact
+
+            </span>
+
+
+            <h2>
+
+                Tell us what
+                you're trying
+                to solve.
+
+            </h2>
+
+
         </div>
 
-        <h2 class="section-title">
-            Let's discuss what you're trying to build.
-        </h2>
-
-        <p class="section-description">
-
-            Tell us about the business problem, process or idea
-            you're working on and we'll explore how technology
-            can help.
-
-        </p>
 
 
-        <div class="contact-options">
+        <div class="contact-copy reveal">
 
 
-            <a
-                href="mailto:info@arunodaycare.com"
-                class="button button-primary">
+            <p>
 
-                ✉ Email Us
+                Share the business problem,
+                workflow or idea you're working
+                on and we'll explore where
+                technology can create value.
 
-            </a>
-
-
-            <a
-                href="https://wa.me/917009036138?text=Hi%20I%20would%20like%20to%20discuss%20a%20technology%20project."
-                target="_blank"
-                rel="noopener noreferrer"
-                class="button button-secondary">
-
-                WhatsApp
-
-            </a>
+            </p>
 
 
-            <a
-                href="tel:+917009036138"
-                class="button button-secondary">
+            <div class="contact-links">
 
-                Call
 
-            </a>
+                <a
+                    href="mailto:info@arunodaycare.com"
+                    class="contact-link">
+
+                    <span>
+                        Email
+                    </span>
+
+                    <span>
+                        info@arunodaycare.com ↗
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="https://wa.me/917009036138?text=Hi%20I%20would%20like%20to%20discuss%20a%20technology%20project."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="contact-link">
+
+                    <span>
+                        WhatsApp
+                    </span>
+
+                    <span>
+                        Start chat ↗
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="tel:+917009036138"
+                    class="contact-link">
+
+                    <span>
+                        Phone
+                    </span>
+
+                    <span>
+                        +91-7009036138 ↗
+                    </span>
+
+                </a>
+
+
+            </div>
 
 
         </div>
@@ -1699,44 +3566,119 @@
 
 
 
-<!-- ==========================
+<!-- ==========================================================
      FOOTER
-========================== -->
+========================================================== -->
 
 <footer>
 
-    <div class="container footer-container">
+
+    <div class="container footer-inner">
+
 
         <div>
 
-            © <span id="year"></span>
-            ArunodayCare Technologies.
-            All rights reserved.
+            ©
+            <span id="year"></span>
+
+            ArunodayCare Technologies
 
         </div>
+
 
         <div>
 
-            Data • Analytics • AI • Automation
+            AI · Data · Analytics · Automation
 
         </div>
+
 
     </div>
+
 
 </footer>
 
 
 
+<!-- ==========================================================
+     JAVASCRIPT
+========================================================== -->
+
 <script>
 
-    function toggleMenu() {
 
-        const navLinks =
-            document.getElementById("navLinks");
+    /* ==========================
+       CURRENT YEAR
+    ========================== */
 
-        navLinks.classList.toggle("active");
+    document.getElementById(
+        "year"
+    ).textContent =
+        new Date().getFullYear();
 
-    }
+
+
+    /* ==========================
+       NAV SCROLL EFFECT
+    ========================== */
+
+    const navbar =
+        document.getElementById(
+            "navbar"
+        );
+
+
+    window.addEventListener(
+        "scroll",
+        () => {
+
+            if (
+                window.scrollY > 20
+            ) {
+
+                navbar.classList.add(
+                    "scrolled"
+                );
+
+            } else {
+
+                navbar.classList.remove(
+                    "scrolled"
+                );
+
+            }
+
+        }
+    );
+
+
+
+    /* ==========================
+       MOBILE MENU
+    ========================== */
+
+    const menuButton =
+        document.getElementById(
+            "menuButton"
+        );
+
+
+    const navLinks =
+        document.getElementById(
+            "navLinks"
+        );
+
+
+    menuButton.addEventListener(
+        "click",
+        () => {
+
+            navLinks.classList.toggle(
+                "active"
+            );
+
+        }
+    );
 
 
     document.querySelectorAll(
@@ -1745,12 +3687,11 @@
 
         link.addEventListener(
             "click",
-            function () {
+            () => {
 
-                document
-                    .getElementById("navLinks")
-                    .classList
-                    .remove("active");
+                navLinks.classList.remove(
+                    "active"
+                );
 
             }
         );
@@ -1758,9 +3699,60 @@
     });
 
 
-    document.getElementById("year")
-        .textContent =
-        new Date().getFullYear();
+
+    /* ==========================
+       SCROLL REVEAL
+    ========================== */
+
+    const revealObserver =
+        new IntersectionObserver(
+
+            entries => {
+
+                entries.forEach(
+                    entry => {
+
+                        if (
+                            entry.isIntersecting
+                        ) {
+
+                            entry.target
+                                .classList
+                                .add(
+                                    "visible"
+                                );
+
+                            revealObserver
+                                .unobserve(
+                                    entry.target
+                                );
+
+                        }
+
+                    }
+                );
+
+            },
+
+            {
+                threshold: .10
+            }
+
+        );
+
+
+    document.querySelectorAll(
+        ".reveal"
+    ).forEach(
+        element => {
+
+            revealObserver.observe(
+                element
+            );
+
+        }
+    );
+
 
 </script>
 
