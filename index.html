@@ -7,6 +7,13 @@
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0">
 
+    <meta name="color-scheme"
+          content="light dark">
+
+    <meta name="theme-color"
+          content="#f7f7f5"
+          id="themeColor">
+
     <title>
         ArunodayCare Technologies | AI, Data & Automation
     </title>
@@ -24,6 +31,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
           rel="stylesheet">
 
+
     <style>
 
         /* ==========================================================
@@ -32,30 +40,40 @@
 
         :root {
 
-            --black: #050505;
-            --dark: #0a0a0a;
-            --dark-soft: #111214;
+            color-scheme: light;
 
-            --white: #ffffff;
-            --off-white: #f7f7f5;
-            --light-grey: #eeeeec;
-            --mid-grey: #d8d8d5;
+            --bg: #f8f8f6;
+            --surface: #ffffff;
+            --surface-alt: #efefec;
+            --surface-elevated: #ffffff;
 
-            --text-dark: #101114;
-            --text-light: #f5f5f7;
+            --text: #0b0c0f;
+            --text-soft: #25262a;
+            --muted: #6d6e75;
+            --muted-soft: #8c8d93;
 
-            --muted-dark: #67676d;
-            --muted-light: #a2a2a8;
+            --border: rgba(0, 0, 0, 0.09);
+            --border-strong: rgba(0, 0, 0, 0.14);
 
-            --blue: #1473e6;
-            --cyan: #00c6ff;
-            --violet: #7c3aed;
+            --nav-bg: rgba(248, 248, 246, 0.82);
 
-            --border-light:
-                rgba(0, 0, 0, 0.08);
+            --blue: #1769ff;
+            --cyan: #00aeea;
+            --violet: #6955ff;
 
-            --border-dark:
-                rgba(255, 255, 255, 0.10);
+            --button-primary-bg: #080808;
+            --button-primary-text: #ffffff;
+
+            --dark-section: #050506;
+            --dark-section-alt: #0d0e11;
+
+            --dark-text: #f7f7f8;
+            --dark-muted: #a6a7af;
+
+            --logo-surface: rgba(255, 255, 255, 0.9);
+
+            --shadow:
+                0 24px 80px rgba(0, 0, 0, 0.09);
 
             --max-width: 1380px;
 
@@ -64,10 +82,65 @@
         }
 
 
+        /* ==========================================================
+           DEVICE DARK MODE
+        ========================================================== */
+
+        @media (prefers-color-scheme: dark) {
+
+            :root {
+
+                color-scheme: dark;
+
+                --bg: #090a0c;
+                --surface: #0e1013;
+                --surface-alt: #15171b;
+                --surface-elevated: #191b20;
+
+                --text: #f5f6f7;
+                --text-soft: #dedfe2;
+                --muted: #a4a6ad;
+                --muted-soft: #85878f;
+
+                --border: rgba(255, 255, 255, 0.09);
+                --border-strong: rgba(255, 255, 255, 0.15);
+
+                --nav-bg: rgba(9, 10, 12, 0.82);
+
+                --blue: #4b8cff;
+                --cyan: #32c8ff;
+                --violet: #8c79ff;
+
+                --button-primary-bg: #f5f5f5;
+                --button-primary-text: #080808;
+
+                --dark-section: #030405;
+                --dark-section-alt: #0b0c0e;
+
+                --dark-text: #f7f7f8;
+                --dark-muted: #a5a7af;
+
+                /*
+                    Keeps the transparent blue logo visible
+                    even against dark navigation.
+                */
+                --logo-surface: rgba(255, 255, 255, 0.94);
+
+                --shadow:
+                    0 24px 80px rgba(0, 0, 0, 0.38);
+            }
+        }
+
+
+
+        /* ==========================================================
+           RESET
+        ========================================================== */
+
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
 
@@ -85,18 +158,22 @@
                 "Segoe UI",
                 sans-serif;
 
-            background: var(--white);
-
-            color: var(--text-dark);
+            background: var(--bg);
+            color: var(--text);
 
             overflow-x: hidden;
 
-            -webkit-font-smoothing:
-                antialiased;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+
+            transition:
+                background .25s ease,
+                color .25s ease;
         }
 
 
         img {
+            display: block;
             max-width: 100%;
         }
 
@@ -113,7 +190,7 @@
 
 
         section {
-            scroll-margin-top: 90px;
+            scroll-margin-top: 100px;
         }
 
 
@@ -124,7 +201,7 @@
                 var(--max-width)
             );
 
-            margin: 0 auto;
+            margin-inline: auto;
         }
 
 
@@ -141,46 +218,38 @@
             left: 0;
 
             width: 100%;
-
-            height: 76px;
+            height: 84px;
 
             z-index: 9999;
 
-            background:
-                rgba(250, 250, 249, .78);
+            background: var(--nav-bg);
 
             backdrop-filter:
-                blur(20px)
+                blur(24px)
                 saturate(180%);
 
             -webkit-backdrop-filter:
-                blur(20px)
+                blur(24px)
                 saturate(180%);
 
             border-bottom:
-                1px solid
-                rgba(0, 0, 0, .06);
+                1px solid var(--border);
 
             transition:
-                background .35s ease,
-                box-shadow .35s ease;
+                background .3s ease,
+                box-shadow .3s ease;
         }
 
 
         .navbar.scrolled {
 
-            background:
-                rgba(255, 255, 255, .93);
-
             box-shadow:
-                0 8px 30px
-                rgba(0, 0, 0, .04);
+                0 8px 35px
+                rgba(0, 0, 0, .07);
         }
 
 
         .nav-inner {
-
-            max-width: var(--max-width);
 
             width: min(
                 calc(100% - 56px),
@@ -189,12 +258,11 @@
 
             height: 100%;
 
-            margin: auto;
+            margin-inline: auto;
 
             display: flex;
 
             align-items: center;
-
             justify-content: space-between;
         }
 
@@ -205,29 +273,58 @@
 
             align-items: center;
 
-            gap: 11px;
+            gap: 13px;
+        }
+
+
+        /*
+            The logo is intentionally placed
+            on a small light tile.
+
+            This guarantees visibility in both
+            light and dark system themes.
+        */
+
+        .brand-mark {
+
+            width: 58px;
+            height: 58px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            flex-shrink: 0;
+
+            border-radius: 16px;
+
+            background: var(--logo-surface);
+
+            border:
+                1px solid
+                rgba(0, 0, 0, .06);
+
+            padding: 5px;
         }
 
 
         .brand-logo {
 
-            width: 42px;
-            height: 42px;
+            width: 100%;
+            height: 100%;
 
             object-fit: contain;
-
-            flex-shrink: 0;
         }
 
 
         .brand-name {
 
-            font-size: 1rem;
+            font-size: 1.06rem;
 
             font-weight: 700;
 
-            letter-spacing:
-                -0.03em;
+            letter-spacing: -.035em;
 
             white-space: nowrap;
         }
@@ -235,31 +332,31 @@
 
         .brand-name span {
 
-            font-weight: 500;
-
             color: var(--blue);
+
+            font-weight: 600;
         }
 
 
         .nav-links {
+
+            list-style: none;
 
             display: flex;
 
             align-items: center;
 
             gap: 32px;
-
-            list-style: none;
         }
 
 
         .nav-links a {
 
-            font-size: .9rem;
+            color: var(--text-soft);
+
+            font-size: .89rem;
 
             font-weight: 500;
-
-            color: #343438;
 
             transition:
                 color .2s ease;
@@ -267,35 +364,36 @@
 
 
         .nav-links a:hover {
+
             color: var(--blue);
         }
 
 
         .nav-button {
 
-            color: white !important;
+            padding: 11px 20px;
 
-            background: var(--black);
+            border-radius: 999px;
 
-            padding:
-                10px 18px;
+            background:
+                var(--button-primary-bg);
 
-            border-radius:
-                999px;
+            color:
+                var(--button-primary-text)
+                !important;
 
             transition:
                 transform .25s var(--ease),
-                background .25s ease !important;
+                opacity .25s ease;
         }
 
 
         .nav-button:hover {
 
-            background:
-                var(--blue);
-
             transform:
                 translateY(-1px);
+
+            opacity: .87;
         }
 
 
@@ -303,16 +401,23 @@
 
             display: none;
 
-            border: 0;
+            width: 44px;
+            height: 44px;
 
-            background:
-                transparent;
+            align-items: center;
+            justify-content: center;
 
-            color: var(--black);
+            border: 1px solid var(--border);
 
-            font-size: 1.6rem;
+            border-radius: 12px;
+
+            background: var(--surface);
+
+            color: var(--text);
 
             cursor: pointer;
+
+            font-size: 1.25rem;
         }
 
 
@@ -323,13 +428,9 @@
 
         .hero {
 
-            min-height: 100vh;
+            min-height: 92vh;
 
-            padding-top:
-                76px;
-
-            background:
-                var(--off-white);
+            padding-top: 84px;
 
             position: relative;
 
@@ -337,9 +438,9 @@
 
             display: flex;
 
-            flex-direction: column;
+            align-items: center;
 
-            justify-content: center;
+            background: var(--bg);
         }
 
 
@@ -349,23 +450,46 @@
 
             position: absolute;
 
-            width: 760px;
-            height: 760px;
+            width: 720px;
+            height: 720px;
 
-            right: -200px;
             top: 80px;
+            right: -170px;
 
             border-radius: 50%;
 
             background:
                 radial-gradient(
                     circle,
-                    rgba(0, 198, 255, .12),
-                    rgba(124, 58, 237, .06) 40%,
+                    rgba(43, 157, 255, .13),
+                    rgba(112, 78, 255, .06) 45%,
                     transparent 70%
                 );
 
-            filter: blur(20px);
+            pointer-events: none;
+        }
+
+
+        .hero::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 430px;
+            height: 430px;
+
+            left: -230px;
+            bottom: -180px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(0, 188, 255, .08),
+                    transparent 70%
+                );
 
             pointer-events: none;
         }
@@ -373,12 +497,14 @@
 
         .hero-content {
 
+            width: 100%;
+
             position: relative;
 
             z-index: 2;
 
             padding:
-                120px 0 90px;
+                90px 0 82px;
         }
 
 
@@ -388,22 +514,17 @@
 
             align-items: center;
 
-            gap: 10px;
+            gap: 11px;
 
-            margin-bottom:
-                28px;
+            margin-bottom: 27px;
 
-            color:
-                var(--muted-dark);
+            color: var(--muted);
 
-            text-transform:
-                uppercase;
+            text-transform: uppercase;
 
-            letter-spacing:
-                .14em;
+            letter-spacing: .15em;
 
-            font-size:
-                .72rem;
+            font-size: .72rem;
 
             font-weight: 700;
         }
@@ -416,89 +537,76 @@
             width: 30px;
             height: 1px;
 
-            background:
-                var(--blue);
+            background: var(--blue);
         }
 
 
         .hero h1 {
 
-            max-width:
-                1120px;
+            max-width: 1000px;
 
             font-size:
                 clamp(
-                    4.2rem,
-                    8vw,
-                    8.5rem
+                    3.6rem,
+                    5.6vw,
+                    6.4rem
                 );
 
-            line-height:
-                .92;
+            line-height: .98;
 
-            letter-spacing:
-                -.075em;
+            letter-spacing: -.065em;
 
-            font-weight:
-                700;
+            font-weight: 700;
         }
 
 
-        .hero h1 .gradient-word {
+        .gradient-word {
 
             background:
                 linear-gradient(
-                    100deg,
-                    #0c6fff,
-                    #00b7ff 45%,
-                    #7655ff
+                    105deg,
+                    var(--blue) 0%,
+                    var(--cyan) 48%,
+                    var(--violet) 100%
                 );
 
-            -webkit-background-clip:
-                text;
+            -webkit-background-clip: text;
 
-            background-clip:
-                text;
+            background-clip: text;
 
-            color:
-                transparent;
+            color: transparent;
         }
 
 
         .hero-bottom {
 
-            display: flex;
+            max-width: 1120px;
 
-            justify-content:
-                space-between;
+            display: grid;
 
-            align-items:
-                flex-end;
+            grid-template-columns:
+                minmax(0, 620px)
+                auto;
 
-            gap: 50px;
+            justify-content: space-between;
 
-            margin-top:
-                60px;
+            align-items: end;
+
+            gap: 70px;
+
+            margin-top: 48px;
         }
 
 
         .hero-copy {
 
-            max-width:
-                650px;
+            max-width: 620px;
 
-            color:
-                var(--muted-dark);
+            color: var(--muted);
 
-            font-size:
-                clamp(
-                    1rem,
-                    1.5vw,
-                    1.22rem
-                );
+            font-size: 1.07rem;
 
-            line-height:
-                1.7;
+            line-height: 1.78;
         }
 
 
@@ -506,11 +614,11 @@
 
             display: flex;
 
-            gap: 12px;
+            align-items: center;
 
             flex-wrap: wrap;
 
-            flex-shrink: 0;
+            gap: 11px;
         }
 
 
@@ -527,26 +635,23 @@
 
             justify-content: center;
 
-            gap: 10px;
+            gap: 9px;
 
             min-height: 48px;
 
-            padding:
-                0 22px;
+            padding: 0 22px;
 
-            border-radius:
-                999px;
+            border-radius: 999px;
 
-            font-size:
-                .91rem;
+            font-size: .9rem;
 
-            font-weight:
-                600;
+            font-weight: 600;
 
             transition:
                 transform .25s var(--ease),
                 background .25s ease,
-                color .25s ease;
+                color .25s ease,
+                border-color .25s ease;
         }
 
 
@@ -557,69 +662,62 @@
         }
 
 
-        .button-dark {
-
-            background:
-                var(--black);
+        .button-primary {
 
             color:
-                white;
-        }
-
-
-        .button-dark:hover {
+                var(--button-primary-text);
 
             background:
-                var(--blue);
+                var(--button-primary-bg);
         }
 
 
-        .button-outline {
+        .button-primary:hover {
+
+            opacity: .87;
+        }
+
+
+        .button-secondary {
+
+            color: var(--text);
+
+            background:
+                var(--surface-elevated);
 
             border:
                 1px solid
-                rgba(0, 0, 0, .14);
-
-            background:
-                rgba(255,255,255,.5);
-
-            color:
-                var(--black);
+                var(--border-strong);
         }
 
 
-        .button-outline:hover {
+        .button-secondary:hover {
 
-            background:
-                white;
+            border-color: var(--blue);
         }
 
 
         .button-light {
 
-            background:
-                white;
+            color: #060606;
 
-            color:
-                black;
+            background: #ffffff;
         }
 
 
         .button-light:hover {
 
-            background:
-                #e7e7e7;
+            background: #e9e9e9;
         }
 
 
         .button-dark-outline {
 
+            color: white;
+
             border:
                 1px solid
-                rgba(255,255,255,.18);
-
-            color:
-                white;
+                rgba(255,255,255,.2);
 
             background:
                 rgba(255,255,255,.04);
@@ -629,7 +727,7 @@
         .button-dark-outline:hover {
 
             background:
-                rgba(255,255,255,.10);
+                rgba(255,255,255,.11);
         }
 
 
@@ -640,19 +738,15 @@
 
         .tech-strip {
 
-            background:
-                var(--white);
+            padding: 27px 0;
+
+            background: var(--surface);
 
             border-top:
-                1px solid
-                var(--border-light);
+                1px solid var(--border);
 
             border-bottom:
-                1px solid
-                var(--border-light);
-
-            padding:
-                28px 0;
+                1px solid var(--border);
         }
 
 
@@ -660,13 +754,11 @@
 
             display: flex;
 
-            justify-content:
-                space-between;
+            align-items: center;
 
-            align-items:
-                center;
+            justify-content: space-between;
 
-            gap: 30px;
+            gap: 35px;
 
             flex-wrap: wrap;
         }
@@ -674,20 +766,15 @@
 
         .tech-label {
 
-            font-size:
-                .73rem;
+            color: var(--muted-soft);
 
-            letter-spacing:
-                .15em;
+            font-size: .7rem;
 
-            font-weight:
-                700;
+            font-weight: 700;
 
-            color:
-                #8a8a90;
+            letter-spacing: .15em;
 
-            text-transform:
-                uppercase;
+            text-transform: uppercase;
         }
 
 
@@ -695,74 +782,62 @@
 
             display: flex;
 
-            gap: 30px;
-
             flex-wrap: wrap;
+
+            gap: 28px;
         }
 
 
         .tech-list span {
 
-            color:
-                #55555b;
+            color: var(--muted);
 
-            font-size:
-                .86rem;
+            font-size: .84rem;
 
-            font-weight:
-                500;
+            font-weight: 500;
         }
 
 
 
         /* ==========================================================
-           COMMON SECTION TYPOGRAPHY
+           COMMON SECTIONS
         ========================================================== */
 
         .section {
 
-            padding:
-                145px 0;
+            padding: 140px 0;
         }
 
 
         .section-light {
 
-            background:
-                var(--white);
+            background: var(--surface);
 
-            color:
-                var(--text-dark);
+            color: var(--text);
         }
 
 
         .section-grey {
 
-            background:
-                var(--off-white);
+            background: var(--surface-alt);
 
-            color:
-                var(--text-dark);
+            color: var(--text);
         }
 
 
         .section-dark {
 
-            background:
-                var(--black);
+            background: var(--dark-section);
 
-            color:
-                var(--text-light);
+            color: var(--dark-text);
         }
 
 
         .section-heading {
 
-            max-width:
-                920px;
+            max-width: 910px;
 
-            margin-bottom:
-                85px;
+            margin-bottom: 78px;
         }
 
 
@@ -770,30 +845,23 @@
 
             display: block;
 
-            margin-bottom:
-                20px;
+            margin-bottom: 20px;
 
-            font-size:
-                .73rem;
+            color: var(--blue);
 
-            font-weight:
-                700;
+            font-size: .71rem;
 
-            letter-spacing:
-                .15em;
+            font-weight: 700;
 
-            text-transform:
-                uppercase;
+            letter-spacing: .16em;
 
-            color:
-                var(--blue);
+            text-transform: uppercase;
         }
 
 
         .section-dark .eyebrow {
 
-            color:
-                #54b8ff;
+            color: #5bbcff;
         }
 
 
@@ -801,52 +869,36 @@
 
             font-size:
                 clamp(
-                    3rem,
-                    6vw,
-                    6rem
+                    2.8rem,
+                    5.4vw,
+                    5.5rem
                 );
 
-            letter-spacing:
-                -.06em;
+            line-height: .99;
 
-            line-height:
-                .98;
+            letter-spacing: -.06em;
 
-            font-weight:
-                650;
+            font-weight: 650;
         }
 
 
         .section-heading p {
 
-            margin-top:
-                30px;
+            max-width: 690px;
 
-            max-width:
-                670px;
+            margin-top: 27px;
 
-            font-size:
-                1.06rem;
+            color: var(--muted);
 
-            line-height:
-                1.75;
+            font-size: 1.03rem;
 
-            color:
-                var(--muted-dark);
-        }
-
-
-        .section-dark
-        .section-heading p {
-
-            color:
-                var(--muted-light);
+            line-height: 1.76;
         }
 
 
 
         /* ==========================================================
-           PRODUCT SHOWCASE
+           PRODUCTS
         ========================================================== */
 
         .product-showcase {
@@ -854,7 +906,10 @@
             display: grid;
 
             grid-template-columns:
-                repeat(2, minmax(0, 1fr));
+                repeat(
+                    2,
+                    minmax(0,1fr)
+                );
 
             gap: 24px;
         }
@@ -862,60 +917,52 @@
 
         .product {
 
+            min-height: 560px;
+
             position: relative;
 
-            min-height:
-                600px;
-
-            border-radius:
-                34px;
-
             overflow: hidden;
-
-            padding:
-                42px;
 
             display: flex;
 
             flex-direction: column;
 
-            justify-content:
-                space-between;
+            justify-content: space-between;
+
+            padding: 40px;
+
+            border-radius: 30px;
 
             transition:
-                transform .5s var(--ease),
-                box-shadow .5s var(--ease);
+                transform .45s var(--ease),
+                box-shadow .45s var(--ease);
         }
 
 
         .product:hover {
 
             transform:
-                translateY(-8px);
+                translateY(-7px);
 
-            box-shadow:
-                0 30px 70px
-                rgba(0, 0, 0, .12);
+            box-shadow: var(--shadow);
         }
 
 
-        .product-light {
+        /*
+           These cards intentionally maintain
+           visual contrast regardless of system mode.
+        */
+
+        .product-black {
 
             background:
-                #efefed;
+                linear-gradient(
+                    145deg,
+                    #050607,
+                    #101216
+                );
 
-            color:
-                #111;
-        }
-
-
-        .product-dark {
-
-            background:
-                #08090b;
-
-            color:
-                white;
+            color: white;
         }
 
 
@@ -924,13 +971,24 @@
             background:
                 linear-gradient(
                     145deg,
-                    #061728,
-                    #072648 52%,
-                    #102d55
+                    #061522,
+                    #082846 55%,
+                    #113a62
                 );
 
-            color:
-                white;
+            color: white;
+        }
+
+
+        .product-adaptive {
+
+            background:
+                var(--surface-alt);
+
+            color: var(--text);
+
+            border:
+                1px solid var(--border);
         }
 
 
@@ -938,149 +996,125 @@
 
             background:
                 radial-gradient(
-                    circle at 80% 0%,
-                    rgba(77, 183, 255, .45),
+                    circle at 83% 5%,
+                    rgba(47, 180, 255, .45),
                     transparent 38%
                 ),
+
                 radial-gradient(
-                    circle at 5% 100%,
-                    rgba(124, 58, 237, .42),
+                    circle at 6% 95%,
+                    rgba(119, 75, 255, .44),
                     transparent 42%
                 ),
-                #090a0d;
 
-            color:
-                white;
+                #08090c;
+
+            color: white;
         }
 
 
         .product-label {
 
-            font-size:
-                .72rem;
+            margin-bottom: 16px;
 
-            text-transform:
-                uppercase;
+            color: var(--muted-soft);
 
-            letter-spacing:
-                .15em;
+            font-size: .69rem;
 
-            color:
-                #83838a;
+            font-weight: 700;
 
-            font-weight:
-                700;
+            letter-spacing: .15em;
 
-            margin-bottom:
-                18px;
+            text-transform: uppercase;
         }
 
 
-        .product-dark
-        .product-label,
+        .product-black .product-label,
+        .product-blue .product-label,
+        .product-gradient .product-label {
 
-        .product-blue
-        .product-label,
-
-        .product-gradient
-        .product-label {
-
-            color:
-                #9ea3ac;
+            color: #a3a8b2;
         }
 
 
         .product h3 {
 
+            max-width: 540px;
+
             font-size:
                 clamp(
                     2rem,
-                    3.4vw,
-                    3.6rem
+                    3.2vw,
+                    3.4rem
                 );
 
-            max-width:
-                560px;
+            line-height: 1.03;
 
-            line-height:
-                1.03;
-
-            letter-spacing:
-                -.045em;
+            letter-spacing: -.045em;
         }
 
 
         .product-copy {
 
-            max-width:
-                540px;
+            max-width: 540px;
 
-            margin-top:
-                22px;
+            margin-top: 21px;
 
-            line-height:
-                1.7;
+            color: var(--muted);
 
-            font-size:
-                .98rem;
+            font-size: .96rem;
 
-            color:
-                #696970;
+            line-height: 1.72;
         }
 
 
-        .product-dark
-        .product-copy,
+        .product-black .product-copy,
+        .product-blue .product-copy,
+        .product-gradient .product-copy {
 
-        .product-blue
-        .product-copy,
-
-        .product-gradient
-        .product-copy {
-
-            color:
-                #aab0ba;
+            color: #aeb2bb;
         }
 
 
         .product-art {
 
+            height: 240px;
+
             position: relative;
 
-            height:
-                260px;
-
-            margin-top:
-                50px;
+            margin-top: 45px;
         }
 
 
-        /* AI NETWORK ART */
+
+        /* ==========================================================
+           PRODUCT ART - AI ORB
+        ========================================================== */
 
         .ai-orb {
 
             position: absolute;
 
-            width: 220px;
-            height: 220px;
+            width: 205px;
+            height: 205px;
 
-            right: 6%;
-            bottom: -10px;
+            right: 7%;
+            bottom: 0;
 
             border-radius: 50%;
 
             background:
                 radial-gradient(
-                    circle at 35% 30%,
-                    #72e6ff,
-                    #1473e6 42%,
-                    #5b21b6 70%,
-                    #04050a
+                    circle at 35% 28%,
+                    #8aeaff,
+                    #2085fa 40%,
+                    #6030c9 72%,
+                    #06060a
                 );
 
             box-shadow:
                 0 0 90px
-                rgba(32, 134, 255, .3);
+                rgba(35, 133, 255, .3);
         }
 
 
@@ -1096,7 +1130,7 @@
 
             border:
                 1px solid
-                rgba(255,255,255,.25);
+                rgba(255,255,255,.27);
         }
 
 
@@ -1104,37 +1138,36 @@
 
             position: absolute;
 
-            width: 330px;
-            height: 100px;
+            width: 315px;
+            height: 90px;
 
-            right: -15px;
-            bottom: 50px;
+            right: -5px;
+            bottom: 57px;
 
             border:
                 1px solid
-                rgba(255,255,255,.20);
+                rgba(255,255,255,.22);
 
             border-radius: 50%;
 
             transform:
-                rotate(-18deg);
+                rotate(-17deg);
         }
 
 
 
-        /* VOICE ART */
+        /* ==========================================================
+           PRODUCT ART - VOICE
+        ========================================================== */
 
         .voice-bars {
 
-            height:
-                100%;
+            height: 100%;
 
             display: flex;
 
+            justify-content: center;
             align-items: center;
-
-            justify-content:
-                center;
 
             gap: 8px;
         }
@@ -1144,14 +1177,13 @@
 
             width: 7px;
 
-            border-radius:
-                999px;
+            border-radius: 999px;
 
             background:
                 linear-gradient(
                     to top,
-                    #1775e5,
-                    #23d2ff
+                    #2476e8,
+                    #38dcff
                 );
 
             animation:
@@ -1162,47 +1194,47 @@
 
 
         .voice-bars span:nth-child(1) {
-            height: 50px;
+            height: 45px;
         }
 
         .voice-bars span:nth-child(2) {
-            height: 110px;
-            animation-delay: .15s;
+            height: 95px;
+            animation-delay: .12s;
         }
 
         .voice-bars span:nth-child(3) {
-            height: 180px;
-            animation-delay: .30s;
+            height: 155px;
+            animation-delay: .24s;
         }
 
         .voice-bars span:nth-child(4) {
-            height: 130px;
-            animation-delay: .45s;
+            height: 115px;
+            animation-delay: .36s;
         }
 
         .voice-bars span:nth-child(5) {
-            height: 220px;
-            animation-delay: .60s;
+            height: 205px;
+            animation-delay: .48s;
         }
 
         .voice-bars span:nth-child(6) {
-            height: 140px;
-            animation-delay: .75s;
+            height: 130px;
+            animation-delay: .60s;
         }
 
         .voice-bars span:nth-child(7) {
-            height: 185px;
-            animation-delay: .90s;
+            height: 168px;
+            animation-delay: .72s;
         }
 
         .voice-bars span:nth-child(8) {
-            height: 100px;
-            animation-delay: 1.05s;
+            height: 90px;
+            animation-delay: .84s;
         }
 
         .voice-bars span:nth-child(9) {
-            height: 55px;
-            animation-delay: 1.2s;
+            height: 48px;
+            animation-delay: .96s;
         }
 
 
@@ -1210,13 +1242,15 @@
 
             0%,
             100% {
-                transform:
-                    scaleY(.72);
 
-                opacity: .5;
+                transform:
+                    scaleY(.68);
+
+                opacity: .52;
             }
 
             50% {
+
                 transform:
                     scaleY(1);
 
@@ -1226,64 +1260,65 @@
 
 
 
-        /* AUTOMATION ART */
+        /* ==========================================================
+           PRODUCT ART - AUTOMATION
+        ========================================================== */
 
         .flow {
 
+            height: 100%;
+
             display: flex;
 
+            justify-content: center;
             align-items: center;
-
-            justify-content:
-                center;
-
-            height: 100%;
         }
 
 
         .flow-node {
 
-            width: 92px;
-            height: 92px;
-
-            border-radius:
-                24px;
-
-            background:
-                white;
-
-            border:
-                1px solid
-                rgba(0,0,0,.07);
-
-            box-shadow:
-                0 15px 45px
-                rgba(0,0,0,.08);
+            width: 88px;
+            height: 88px;
 
             display: flex;
 
             align-items: center;
-
             justify-content: center;
 
-            font-size:
-                1.7rem;
+            border-radius: 22px;
+
+            color: var(--text);
+
+            background:
+                var(--surface-elevated);
+
+            border:
+                1px solid
+                var(--border);
+
+            box-shadow:
+                0 15px 35px
+                rgba(0, 0, 0, .08);
+
+            font-size: 1.4rem;
+
+            font-weight: 700;
         }
 
 
         .flow-line {
 
-            width: 70px;
+            width: 68px;
             height: 2px;
+
+            position: relative;
 
             background:
                 linear-gradient(
                     90deg,
-                    #ccc,
-                    #1473e6
+                    var(--border-strong),
+                    var(--blue)
                 );
-
-            position: relative;
         }
 
 
@@ -1299,11 +1334,9 @@
             top: 50%;
             left: 0;
 
-            border-radius:
-                50%;
+            border-radius: 50%;
 
-            background:
-                var(--blue);
+            background: var(--blue);
 
             transform:
                 translateY(-50%);
@@ -1322,40 +1355,40 @@
             }
 
             to {
-                left: calc(100% - 8px);
+                left:
+                    calc(100% - 8px);
             }
         }
 
 
 
-        /* ANALYTICS ART */
+        /* ==========================================================
+           PRODUCT ART - ANALYTICS
+        ========================================================== */
 
         .dashboard {
 
-            height: 220px;
-
-            border:
-                1px solid
-                rgba(255,255,255,.13);
-
-            border-radius:
-                20px;
-
-            background:
-                rgba(255,255,255,.06);
-
-            backdrop-filter:
-                blur(20px);
-
-            padding:
-                22px;
+            height: 215px;
 
             display: grid;
 
             grid-template-columns:
                 1.2fr .8fr;
 
-            gap: 16px;
+            gap: 15px;
+
+            padding: 21px;
+
+            border-radius: 20px;
+
+            background:
+                rgba(255,255,255,.065);
+
+            border:
+                1px solid
+                rgba(255,255,255,.14);
+
+            backdrop-filter: blur(20px);
 
             transform:
                 perspective(1000px)
@@ -1366,19 +1399,18 @@
 
         .chart {
 
-            border-radius:
-                14px;
+            position: relative;
+
+            overflow: hidden;
+
+            border-radius: 14px;
 
             background:
                 linear-gradient(
                     180deg,
-                    rgba(0,198,255,.18),
-                    rgba(0,198,255,.02)
+                    rgba(0,190,255,.19),
+                    rgba(0,190,255,.025)
                 );
-
-            position: relative;
-
-            overflow: hidden;
         }
 
 
@@ -1392,13 +1424,13 @@
             height: 2px;
 
             left: -10%;
-            top: 58%;
+            top: 57%;
 
             background:
                 linear-gradient(
                     90deg,
                     transparent,
-                    #4fdcff,
+                    #56dfff,
                     transparent
                 );
 
@@ -1407,7 +1439,7 @@
 
             box-shadow:
                 0 0 24px
-                rgba(79,220,255,.5);
+                rgba(86,223,255,.55);
         }
 
 
@@ -1424,11 +1456,118 @@
 
         .metric {
 
-            border-radius:
-                12px;
+            border-radius: 12px;
 
             background:
-                rgba(255,255,255,.07);
+                rgba(255,255,255,.075);
+        }
+
+
+
+        /* ==========================================================
+           ABOUT
+        ========================================================== */
+
+        .about-layout {
+
+            display: grid;
+
+            grid-template-columns:
+                1.05fr .95fr;
+
+            gap: 100px;
+
+            align-items: start;
+        }
+
+
+        .about-heading {
+
+            position: sticky;
+
+            top: 145px;
+        }
+
+
+        .about-heading h2 {
+
+            max-width: 780px;
+
+            font-size:
+                clamp(
+                    3.4rem,
+                    6.6vw,
+                    6.8rem
+                );
+
+            line-height: .93;
+
+            letter-spacing: -.07em;
+
+            font-weight: 650;
+        }
+
+
+        .about-story {
+
+            padding-top: 30px;
+        }
+
+
+        .about-lead {
+
+            color: white;
+
+            font-size: 1.35rem;
+
+            line-height: 1.58;
+
+            font-weight: 500;
+
+            margin-bottom: 34px;
+        }
+
+
+        .about-story p:not(.about-lead) {
+
+            color: var(--dark-muted);
+
+            font-size: 1rem;
+
+            line-height: 1.78;
+
+            margin-bottom: 25px;
+        }
+
+
+        .about-statement {
+
+            margin-top: 45px;
+
+            padding-top: 30px;
+
+            border-top:
+                1px solid
+                rgba(255,255,255,.13);
+        }
+
+
+        .about-statement strong {
+
+            display: block;
+
+            color: white;
+
+            font-size:
+                clamp(
+                    1.25rem,
+                    2vw,
+                    1.65rem
+                );
+
+            line-height: 1.45;
+
+            letter-spacing: -.025em;
         }
 
 
@@ -1437,39 +1576,35 @@
            SERVICES
         ========================================================== */
 
-        .services {
+        .services-layout {
 
             display: grid;
 
             grid-template-columns:
-                1fr 2fr;
+                .6fr 1.4fr;
+
+            gap: 60px;
         }
 
 
         .services-label {
 
-            font-size:
-                .72rem;
+            color: var(--muted-soft);
 
-            text-transform:
-                uppercase;
+            font-size: .71rem;
 
-            letter-spacing:
-                .15em;
+            font-weight: 700;
 
-            color:
-                #73737a;
+            letter-spacing: .15em;
 
-            font-weight:
-                700;
+            text-transform: uppercase;
         }
 
 
         .service-list {
 
             border-top:
-                1px solid
-                var(--border-light);
+                1px solid var(--border);
         }
 
 
@@ -1478,19 +1613,16 @@
             display: grid;
 
             grid-template-columns:
-                70px 1fr 32px;
-
-            align-items:
-                start;
+                65px 1fr 32px;
 
             gap: 25px;
 
-            padding:
-                35px 0;
+            align-items: start;
+
+            padding: 34px 0;
 
             border-bottom:
-                1px solid
-                var(--border-light);
+                1px solid var(--border);
 
             transition:
                 padding .3s var(--ease);
@@ -1499,67 +1631,59 @@
 
         .service-item:hover {
 
-            padding-left:
-                12px;
+            padding-left: 10px;
         }
 
 
         .service-number {
 
-            font-size:
-                .78rem;
+            color: var(--muted-soft);
 
-            color:
-                #99999f;
+            font-size: .75rem;
         }
 
 
         .service-item h3 {
 
+            color: var(--text);
+
             font-size:
                 clamp(
                     1.5rem,
-                    2.4vw,
-                    2.5rem
+                    2.2vw,
+                    2.35rem
                 );
 
-            letter-spacing:
-                -.04em;
+            line-height: 1.12;
 
-            font-weight:
-                600;
+            letter-spacing: -.04em;
+
+            font-weight: 600;
         }
 
 
         .service-item p {
 
-            margin-top:
-                10px;
+            max-width: 720px;
 
-            max-width:
-                720px;
+            margin-top: 10px;
 
-            color:
-                var(--muted-dark);
+            color: var(--muted);
 
-            line-height:
-                1.65;
+            font-size: .93rem;
 
-            font-size:
-                .94rem;
+            line-height: 1.68;
         }
 
 
         .service-arrow {
 
-            color:
-                #999;
+            color: var(--muted-soft);
 
-            font-size:
-                1.35rem;
+            font-size: 1.25rem;
 
             transition:
-                transform .3s ease;
+                transform .25s ease;
         }
 
 
@@ -1572,112 +1696,6 @@
 
 
 
-<!-- ==========================================================
-     ABOUT / PHILOSOPHY
-========================================================== -->
-
-<section
-    id="about"
-    class="section section-dark">
-
-    <div class="container philosophy">
-
-
-        <div class="reveal">
-
-            <span class="eyebrow">
-                Why ArunodayCare?
-            </span>
-
-
-            <h2>
-
-                The care is
-                <br>
-                intentional.
-
-            </h2>
-
-        </div>
-
-
-        <div class="philosophy-copy reveal">
-
-            <p style="
-                font-size:1.35rem;
-                line-height:1.6;
-                color:#ffffff;
-                font-weight:500;
-            ">
-
-                ArunodayCare may sound like a healthcare
-                company.
-
-                In a way, that is exactly the point.
-
-            </p>
-
-
-            <p>
-
-                We believe a business, a product and an important
-                technology project deserve the same level of
-                attention, responsibility and care you would expect
-                when something valuable is placed in someone else's hands.
-
-            </p>
-
-
-            <p>
-
-                We do not try to take on every project that comes our way.
-                We first understand the problem, the expectations and
-                whether we are genuinely the right team to deliver it.
-
-            </p>
-
-
-            <p>
-
-                If we do not believe we can create meaningful value,
-                we would rather say no.
-
-                But when we commit, we take ownership seriously —
-                learning the business, protecting the details and
-                building with the intention to meet, and where possible,
-                exceed expectations.
-
-            </p>
-
-
-            <div style="
-                margin-top:40px;
-                padding-top:30px;
-                border-top:1px solid rgba(255,255,255,.12);
-            ">
-
-                <p style="
-                    color:#ffffff;
-                    font-size:1.15rem;
-                    font-weight:600;
-                    margin:0;
-                ">
-
-                    We don't just build technology.
-                    We care about what happens after it is built.
-
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
         /* ==========================================================
            PROCESS
         ========================================================== */
@@ -1687,32 +1705,27 @@
             display: grid;
 
             grid-template-columns:
-                repeat(4, 1fr);
+                repeat(4,1fr);
 
             border-top:
-                1px solid
-                var(--border-light);
+                1px solid var(--border);
         }
 
 
         .process-card {
 
-            min-height:
-                320px;
+            min-height: 300px;
 
-            padding:
-                32px 28px;
-
-            border-right:
-                1px solid
-                var(--border-light);
+            padding: 30px 27px;
 
             display: flex;
 
             flex-direction: column;
 
-            justify-content:
-                space-between;
+            justify-content: space-between;
+
+            border-right:
+                1px solid var(--border);
         }
 
 
@@ -1724,40 +1737,33 @@
 
         .process-number {
 
-            font-size:
-                .72rem;
+            color: var(--muted-soft);
 
-            color:
-                #a0a0a5;
+            font-size: .69rem;
 
-            letter-spacing:
-                .12em;
+            letter-spacing: .13em;
         }
 
 
         .process-card h3 {
 
-            font-size:
-                1.65rem;
+            color: var(--text);
 
-            letter-spacing:
-                -.035em;
+            margin-bottom: 13px;
 
-            margin-bottom:
-                14px;
+            font-size: 1.55rem;
+
+            letter-spacing: -.035em;
         }
 
 
         .process-card p {
 
-            color:
-                var(--muted-dark);
+            color: var(--muted);
 
-            line-height:
-                1.65;
+            font-size: .9rem;
 
-            font-size:
-                .92rem;
+            line-height: 1.66;
         }
 
 
@@ -1768,21 +1774,24 @@
 
         .cta-section {
 
+            padding: 160px 0;
+
+            color: white;
+
             background:
-                var(--black);
+                radial-gradient(
+                    circle at 85% 10%,
+                    rgba(28,142,255,.18),
+                    transparent 35%
+                ),
 
-            color:
-                white;
-
-            padding:
-                170px 0;
+                var(--dark-section);
         }
 
 
         .cta-wrapper {
 
-            max-width:
-                1000px;
+            max-width: 950px;
         }
 
 
@@ -1790,38 +1799,40 @@
 
             font-size:
                 clamp(
-                    4rem,
-                    8vw,
-                    8rem
+                    3.6rem,
+                    7vw,
+                    7.2rem
                 );
 
-            line-height:
-                .92;
+            line-height: .93;
 
-            letter-spacing:
-                -.075em;
+            letter-spacing: -.07em;
 
-            font-weight:
-                650;
+            font-weight: 650;
         }
 
 
         .cta-wrapper p {
 
-            max-width:
-                650px;
+            max-width: 650px;
 
-            margin:
-                35px 0;
+            margin: 32px 0;
 
-            color:
-                var(--muted-light);
+            color: var(--dark-muted);
 
-            line-height:
-                1.7;
+            font-size: 1.02rem;
 
-            font-size:
-                1.04rem;
+            line-height: 1.73;
+        }
+
+
+        .cta-buttons {
+
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 11px;
         }
 
 
@@ -1832,11 +1843,9 @@
 
         .contact-section {
 
-            background:
-                var(--off-white);
+            padding: 125px 0;
 
-            padding:
-                130px 0;
+            background: var(--surface-alt);
         }
 
 
@@ -1845,43 +1854,38 @@
             display: grid;
 
             grid-template-columns:
-                1.2fr .8fr;
+                1.15fr .85fr;
 
-            gap:
-                100px;
+            gap: 100px;
 
-            align-items:
-                end;
+            align-items: end;
         }
 
 
         .contact-grid h2 {
 
+            max-width: 700px;
+
             font-size:
                 clamp(
                     3rem,
                     5vw,
-                    5.5rem
+                    5.2rem
                 );
 
-            line-height:
-                .98;
+            line-height: .99;
 
-            letter-spacing:
-                -.06em;
+            letter-spacing: -.06em;
         }
 
 
         .contact-copy p {
 
-            color:
-                var(--muted-dark);
+            color: var(--muted);
 
-            line-height:
-                1.7;
+            line-height: 1.73;
 
-            margin-bottom:
-                25px;
+            margin-bottom: 28px;
         }
 
 
@@ -1892,8 +1896,7 @@
             flex-direction: column;
 
             border-top:
-                1px solid
-                var(--border-light);
+                1px solid var(--border);
         }
 
 
@@ -1901,31 +1904,30 @@
 
             display: flex;
 
-            justify-content:
-                space-between;
+            justify-content: space-between;
 
-            padding:
-                18px 0;
+            gap: 25px;
+
+            padding: 18px 0;
+
+            color: var(--text);
 
             border-bottom:
-                1px solid
-                var(--border-light);
+                1px solid var(--border);
 
-            font-size:
-                .95rem;
+            font-size: .92rem;
 
             transition:
+                color .2s ease,
                 padding .25s ease;
         }
 
 
         .contact-link:hover {
 
-            padding-left:
-                10px;
+            color: var(--blue);
 
-            color:
-                var(--blue);
+            padding-left: 8px;
         }
 
 
@@ -1936,15 +1938,12 @@
 
         footer {
 
-            background:
-                var(--off-white);
+            padding: 34px 0 44px;
+
+            background: var(--surface-alt);
 
             border-top:
-                1px solid
-                var(--border-light);
-
-            padding:
-                34px 0 45px;
+                1px solid var(--border);
         }
 
 
@@ -1952,24 +1951,23 @@
 
             display: flex;
 
-            justify-content:
-                space-between;
+            justify-content: space-between;
 
-            gap: 30px;
+            align-items: center;
 
             flex-wrap: wrap;
 
-            font-size:
-                .78rem;
+            gap: 20px;
 
-            color:
-                #85858b;
+            color: var(--muted-soft);
+
+            font-size: .77rem;
         }
 
 
 
         /* ==========================================================
-           SCROLL REVEAL
+           REVEAL
         ========================================================== */
 
         .reveal {
@@ -1977,11 +1975,11 @@
             opacity: 0;
 
             transform:
-                translateY(30px);
+                translateY(26px);
 
             transition:
-                opacity .9s var(--ease),
-                transform .9s var(--ease);
+                opacity .8s var(--ease),
+                transform .8s var(--ease);
         }
 
 
@@ -1996,12 +1994,10 @@
 
 
         /* ==========================================================
-           RESPONSIVE
+           RESPONSIVE - TABLET
         ========================================================== */
 
-        @media
-        (max-width: 980px) {
-
+        @media (max-width: 980px) {
 
             .nav-links {
 
@@ -2009,82 +2005,75 @@
 
                 position: absolute;
 
-                top: 76px;
-
+                top: 84px;
                 left: 0;
 
                 width: 100%;
 
-                padding:
-                    30px;
+                padding: 28px;
 
-                flex-direction:
-                    column;
+                flex-direction: column;
 
-                align-items:
-                    flex-start;
+                align-items: flex-start;
 
-                background:
-                    rgba(
-                        255,
-                        255,
-                        255,
-                        .97
-                    );
+                background: var(--surface);
 
                 border-bottom:
-                    1px solid
-                    var(--border-light);
+                    1px solid var(--border);
+
+                box-shadow:
+                    0 20px 30px
+                    rgba(0,0,0,.08);
             }
 
 
             .nav-links.active {
+
                 display: flex;
             }
 
 
             .mobile-menu-button {
-                display: block;
+
+                display: flex;
             }
 
 
             .hero-bottom {
 
-                flex-direction:
-                    column;
+                grid-template-columns: 1fr;
 
-                align-items:
-                    flex-start;
+                align-items: start;
+
+                gap: 30px;
             }
 
 
             .product-showcase {
 
-                grid-template-columns:
-                    1fr;
+                grid-template-columns: 1fr;
             }
 
 
-            .services {
+            .about-layout {
 
-                grid-template-columns:
-                    1fr;
+                grid-template-columns: 1fr;
+
+                gap: 55px;
             }
 
 
-            .services-label {
+            .about-heading {
 
-                margin-bottom:
-                    35px;
+                position: static;
             }
 
 
-            .philosophy {
+            .services-layout {
 
-                grid-template-columns:
-                    1fr;
+                grid-template-columns: 1fr;
 
-                gap: 60px;
+                gap: 32px;
             }
 
 
@@ -2097,40 +2086,58 @@
 
             .contact-grid {
 
-                grid-template-columns:
-                    1fr;
+                grid-template-columns: 1fr;
 
-                gap: 60px;
+                gap: 55px;
             }
         }
 
 
 
-        @media
-        (max-width: 640px) {
+        /* ==========================================================
+           RESPONSIVE - MOBILE
+        ========================================================== */
 
+        @media (max-width: 640px) {
 
             .container,
             .nav-inner {
 
                 width:
-                    calc(
-                        100% - 32px
-                    );
+                    calc(100% - 32px);
             }
 
 
-            .brand-logo {
+            .navbar {
 
-                width: 37px;
-                height: 37px;
+                height: 74px;
+            }
+
+
+            .nav-links {
+
+                top: 74px;
+            }
+
+
+            .brand {
+
+                gap: 9px;
+            }
+
+
+            .brand-mark {
+
+                width: 46px;
+                height: 46px;
+
+                border-radius: 13px;
             }
 
 
             .brand-name {
 
-                font-size:
-                    .92rem;
+                font-size: .89rem;
             }
 
 
@@ -2142,15 +2149,16 @@
 
             .hero {
 
-                min-height:
-                    auto;
+                min-height: auto;
+
+                padding-top: 74px;
             }
 
 
             .hero-content {
 
                 padding:
-                    95px 0 75px;
+                    85px 0 70px;
             }
 
 
@@ -2158,105 +2166,19 @@
 
                 font-size:
                     clamp(
-                        3.5rem,
-                        18vw,
-                        5.5rem
+                        3.2rem,
+                        15vw,
+                        5rem
                     );
+
+                letter-spacing:
+                    -.06em;
             }
 
 
             .hero-bottom {
 
-                margin-top:
-                    45px;
-            }
-
-
-            .section {
-
-                padding:
-                    95px 0;
-            }
-
-
-            .section-heading {
-
-                margin-bottom:
-                    55px;
-            }
-
-
-            .product {
-
-                min-height:
-                    520px;
-
-                padding:
-                    28px;
-
-                border-radius:
-                    24px;
-            }
-
-
-            .product-art {
-
-                height:
-                    210px;
-            }
-
-
-            .process-grid {
-
-                grid-template-columns:
-                    1fr;
-            }
-
-
-            .process-card {
-
-                min-height:
-                    240px;
-
-                border-right: 0;
-
-                border-bottom:
-                    1px solid
-                    var(--border-light);
-            }
-
-
-            .service-item {
-
-                grid-template-columns:
-                    45px 1fr;
-            }
-
-
-            .service-arrow {
-
-                display: none;
-            }
-
-
-            .tech-row {
-
-                align-items:
-                    flex-start;
-            }
-
-
-            .tech-list {
-
-                gap:
-                    16px 22px;
-            }
-
-
-            .cta-section {
-
-                padding:
-                    110px 0;
+                margin-top: 38px;
             }
 
 
@@ -2266,21 +2188,146 @@
             }
 
 
-            .hero-actions
-            .button {
+            .hero-actions .button {
 
                 width: 100%;
+            }
+
+
+            .section {
+
+                padding: 90px 0;
+            }
+
+
+            .section-heading {
+
+                margin-bottom: 52px;
+            }
+
+
+            .product {
+
+                min-height: 500px;
+
+                padding: 27px;
+
+                border-radius: 24px;
+            }
+
+
+            .product-art {
+
+                height: 195px;
+            }
+
+
+            .ai-orb {
+
+                width: 175px;
+                height: 175px;
+            }
+
+
+            .orbit {
+
+                width: 260px;
+            }
+
+
+            .flow-node {
+
+                width: 65px;
+                height: 65px;
+
+                border-radius: 17px;
+
+                font-size: 1rem;
+            }
+
+
+            .flow-line {
+
+                width: 32px;
+            }
+
+
+            .about-heading h2 {
+
+                font-size:
+                    clamp(
+                        3.1rem,
+                        15vw,
+                        5rem
+                    );
+            }
+
+
+            .about-lead {
+
+                font-size: 1.18rem;
+            }
+
+
+            .service-item {
+
+                grid-template-columns:
+                    40px 1fr;
+
+                gap: 16px;
+            }
+
+
+            .service-arrow {
+
+                display: none;
+            }
+
+
+            .process-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .process-card {
+
+                min-height: 225px;
+
+                border-right: 0;
+
+                border-bottom:
+                    1px solid var(--border);
+            }
+
+
+            .cta-section {
+
+                padding: 105px 0;
+            }
+
+
+            .contact-link {
+
+                flex-direction: column;
+
+                gap: 4px;
             }
         }
 
 
-        @media
-        (prefers-reduced-motion: reduce) {
 
-            * {
+        /* ==========================================================
+           ACCESSIBILITY
+        ========================================================== */
 
-                scroll-behavior:
-                    auto !important;
+        @media (prefers-reduced-motion: reduce) {
+
+            *,
+            *::before,
+            *::after {
+
+                scroll-behavior: auto !important;
 
                 animation-duration:
                     .001ms !important;
@@ -2291,11 +2338,20 @@
                 transition-duration:
                     .001ms !important;
             }
+
+
+            .reveal {
+
+                opacity: 1;
+
+                transform: none;
+            }
         }
 
     </style>
 
 </head>
+
 
 
 <body>
@@ -2310,18 +2366,28 @@
 
     <div class="nav-inner">
 
+
         <a href="#"
-           class="brand">
+           class="brand"
+           aria-label="ArunodayCare Technologies home">
 
-            <!--
-            IMPORTANT:
-            Use the standalone icon,
-            NOT the horizontal logo with text.
-            -->
 
-            <img src="ACI logo NEW.png"
-                 alt="ArunodayCare Technologies"
-                 class="brand-logo">
+            <div class="brand-mark">
+
+                <!--
+                    USE THE SYMBOL-ONLY LOGO HERE.
+
+                    Do NOT use the horizontal logo
+                    containing ArunodayCare Technologies.
+                -->
+
+                <img
+                    src="ArunodayCare-icon.png"
+                    alt=""
+                    class="brand-logo">
+
+            </div>
+
 
             <div class="brand-name">
 
@@ -2336,18 +2402,22 @@
         </a>
 
 
+
         <button
             class="mobile-menu-button"
             id="menuButton"
-            aria-label="Open navigation menu">
+            aria-label="Open navigation menu"
+            aria-expanded="false">
 
             ☰
 
         </button>
 
 
+
         <ul class="nav-links"
             id="navLinks">
+
 
             <li>
                 <a href="#products">
@@ -2355,11 +2425,13 @@
                 </a>
             </li>
 
+
             <li>
                 <a href="#services">
                     Services
                 </a>
             </li>
+
 
             <li>
                 <a href="#approach">
@@ -2367,20 +2439,24 @@
                 </a>
             </li>
 
+
             <li>
                 <a href="#about">
                     About
                 </a>
             </li>
 
+
             <li>
-                <a href="#contact"
-                   class="nav-button">
+                <a
+                    href="#contact"
+                    class="nav-button">
 
                     Start a Project
 
                 </a>
             </li>
+
 
         </ul>
 
@@ -2408,16 +2484,14 @@
 
         <h1 class="reveal">
 
-            Technology that
+            Technology that moves
 
             <br>
 
-            moves business
+            business
 
             <span class="gradient-word">
-
                 forward.
-
             </span>
 
         </h1>
@@ -2442,20 +2516,22 @@
             <div class="hero-actions">
 
 
-                <a href="#products"
-                   class="button button-dark">
+                <a
+                    href="#products"
+                    class="button button-primary">
 
                     Explore products
 
-                    <span>
+                    <span aria-hidden="true">
                         ↗
                     </span>
 
                 </a>
 
 
-                <a href="#contact"
-                   class="button button-outline">
+                <a
+                    href="#contact"
+                    class="button button-secondary">
 
                     Discuss a project
 
@@ -2480,9 +2556,10 @@
 
     <div class="container tech-row">
 
+
         <div class="tech-label">
 
-            Built with modern technology
+            Technology ecosystem
 
         </div>
 
@@ -2555,11 +2632,10 @@
 
             <p>
 
-                Practical systems developed around
-                real business problems — designed
-                to reduce manual effort, make data
-                accessible and help people make
-                better decisions.
+                Practical systems developed around real
+                business problems — designed to reduce
+                manual effort, make data accessible and
+                help people make better decisions.
 
             </p>
 
@@ -2571,12 +2647,10 @@
 
 
 
-            <!-- ======================
-                 PRODUCT 1
-            ====================== -->
+            <!-- PRODUCT 1 -->
 
             <article
-                class="product product-dark reveal">
+                class="product product-black reveal">
 
 
                 <div>
@@ -2608,33 +2682,24 @@
 
                     </p>
 
-
                 </div>
 
 
                 <div class="product-art">
 
 
-                    <div class="ai-orb">
+                    <div class="ai-orb"></div>
 
-                    </div>
-
-
-                    <div class="orbit">
-
-                    </div>
+                    <div class="orbit"></div>
 
 
                 </div>
-
 
             </article>
 
 
 
-            <!-- ======================
-                 PRODUCT 2
-            ====================== -->
+            <!-- PRODUCT 2 -->
 
             <article
                 class="product product-blue reveal">
@@ -2660,14 +2725,13 @@
 
                     <p class="product-copy">
 
-                        AI-powered calling technology
-                        capable of conducting structured
-                        conversations, collecting information,
-                        completing workflows and returning
-                        actionable results.
+                        AI-powered calling technology capable
+                        of conducting structured conversations,
+                        collecting information, completing
+                        workflows and returning actionable
+                        results.
 
                     </p>
-
 
                 </div>
 
@@ -2692,17 +2756,14 @@
 
                 </div>
 
-
             </article>
 
 
 
-            <!-- ======================
-                 PRODUCT 3
-            ====================== -->
+            <!-- PRODUCT 3 -->
 
             <article
-                class="product product-light reveal">
+                class="product product-adaptive reveal">
 
 
                 <div>
@@ -2728,10 +2789,9 @@
                         Transform email requests and
                         operational tasks into structured,
                         automated workflows using AI,
-                        APIs and business rules.
+                        APIs and governed business rules.
 
                     </p>
-
 
                 </div>
 
@@ -2749,9 +2809,7 @@
                         </div>
 
 
-                        <div class="flow-line">
-
-                        </div>
+                        <div class="flow-line"></div>
 
 
                         <div class="flow-node">
@@ -2761,9 +2819,7 @@
                         </div>
 
 
-                        <div class="flow-line">
-
-                        </div>
+                        <div class="flow-line"></div>
 
 
                         <div class="flow-node">
@@ -2778,14 +2834,11 @@
 
                 </div>
 
-
             </article>
 
 
 
-            <!-- ======================
-                 PRODUCT 4
-            ====================== -->
+            <!-- PRODUCT 4 -->
 
             <article
                 class="product product-gradient reveal">
@@ -2813,12 +2866,11 @@
 
                         Modern cloud analytics architecture
                         connecting operational systems,
-                        data transformation, governed
+                        transformation layers, governed
                         semantic models and interactive
                         business intelligence.
 
                     </p>
-
 
                 </div>
 
@@ -2829,9 +2881,7 @@
                     <div class="dashboard">
 
 
-                        <div class="chart">
-
-                        </div>
+                        <div class="chart"></div>
 
 
                         <div class="mini-metrics">
@@ -2850,7 +2900,6 @@
 
                 </div>
 
-
             </article>
 
 
@@ -2863,33 +2912,30 @@
 
 
 <!-- ==========================================================
-     ABOUT / PHILOSOPHY
+     ABOUT
 ========================================================== -->
 
 <section
     id="about"
     class="section section-dark">
 
-    <div class="container philosophy">
+    <div class="container about-layout">
 
 
-        <div class="reveal">
+        <div class="about-heading reveal">
 
 
             <span class="eyebrow">
 
-                Our philosophy
+                Why ArunodayCare?
 
             </span>
 
 
             <h2>
 
-                Business first.
-
-                <br>
-
-                Technology second.
+                The care
+                is intentional.
 
             </h2>
 
@@ -2897,35 +2943,74 @@
         </div>
 
 
-        <div class="philosophy-copy reveal">
+
+        <div class="about-story reveal">
 
 
-            <p>
+            <p class="about-lead">
 
-                The best technology starts with
-                understanding the business problem.
+                ArunodayCare may sound like a healthcare
+                company.
 
-            </p>
-
-
-            <p>
-
-                We focus first on the process,
-                the data and the outcome that matters.
-                Only then do we decide which technology
-                should solve it.
+                In a way, that is exactly the point.
 
             </p>
 
 
             <p>
 
-                That approach allows us to build
-                systems that are practical,
-                understandable and designed to evolve
-                with the organizations that use them.
+                We believe a business, a product and an
+                important technology project deserve the
+                same attention, responsibility and care
+                you would expect when something valuable
+                is placed in someone else's hands.
 
             </p>
+
+
+            <p>
+
+                We don't try to take on every project
+                that comes our way.
+
+                Before we commit, we first understand
+                the problem, the expectations and whether
+                we genuinely believe we are the right
+                team to deliver the outcome.
+
+            </p>
+
+
+            <p>
+
+                If we don't believe we can create
+                meaningful value, we would rather say no.
+
+                But when we commit, we take ownership
+                seriously — learning the business,
+                protecting the details and building
+                with the intention to meet, and where
+                possible, exceed expectations.
+
+            </p>
+
+
+            <div class="about-statement">
+
+
+                <strong>
+
+                    We don't just build technology.
+
+                    <br>
+
+                    We care about what happens
+                    after it is built.
+
+                </strong>
+
+
+            </div>
 
 
         </div>
@@ -2965,11 +3050,21 @@
             </h2>
 
 
+            <p>
+
+                Technology services focused on the
+                systems businesses increasingly depend
+                on: reliable data, actionable analytics,
+                intelligent automation and AI.
+
+            </p>
+
+
         </div>
 
 
 
-        <div class="services">
+        <div class="services-layout">
 
 
             <div class="services-label reveal">
@@ -2977,6 +3072,7 @@
                 Services
 
             </div>
+
 
 
             <div class="service-list">
@@ -3000,6 +3096,7 @@
                             AI Agent Development
 
                         </h3>
+
 
                         <p>
 
@@ -3041,6 +3138,7 @@
                             Power BI & Analytics
 
                         </h3>
+
 
                         <p>
 
@@ -3084,6 +3182,7 @@
 
                         </h3>
 
+
                         <p>
 
                             Lakehouse, warehouse,
@@ -3126,13 +3225,14 @@
 
                         </h3>
 
+
                         <p>
 
-                            High-performance SQL,
+                            Production-grade SQL,
                             dimensional modelling,
                             transformation layers,
                             governed metrics and
-                            production-ready data models.
+                            performance optimization.
 
                         </p>
 
@@ -3167,6 +3267,7 @@
                             Intelligent Automation
 
                         </h3>
+
 
                         <p>
 
@@ -3209,11 +3310,12 @@
 
                         </h3>
 
+
                         <p>
 
                             Architecture reviews,
                             modernization planning,
-                            technical strategy and
+                            technology strategy and
                             proof-of-concept development.
 
                         </p>
@@ -3242,7 +3344,7 @@
 
 
 <!-- ==========================================================
-     PROCESS
+     APPROACH
 ========================================================== -->
 
 <section
@@ -3272,7 +3374,8 @@
             <p>
 
                 Complex technology should feel
-                simple to the people using it.
+                straightforward to the people
+                who depend on it.
 
             </p>
 
@@ -3306,8 +3409,9 @@
                     <p>
 
                         Understand the business,
-                        workflow, constraints,
-                        users and desired outcome.
+                        workflow, users, constraints
+                        and the outcome that actually
+                        matters.
 
                     </p>
 
@@ -3342,7 +3446,7 @@
                         Design the data,
                         application and integration
                         architecture around the
-                        business requirement.
+                        real requirement.
 
                     </p>
 
@@ -3375,8 +3479,8 @@
                     <p>
 
                         Build, integrate and test
-                        the solution using modern
-                        cloud technologies.
+                        the solution using reliable,
+                        scalable technologies.
 
                     </p>
 
@@ -3408,9 +3512,9 @@
 
                     <p>
 
-                        Measure outcomes and
-                        continuously improve as
-                        business requirements evolve.
+                        Measure outcomes and evolve
+                        the solution as the business
+                        and its needs change.
 
                     </p>
 
@@ -3429,7 +3533,7 @@
 
 
 <!-- ==========================================================
-     CALL TO ACTION
+     CTA
 ========================================================== -->
 
 <section class="cta-section">
@@ -3466,27 +3570,27 @@
             </p>
 
 
-            <div style="
-                display:flex;
-                flex-wrap:wrap;
-                gap:12px;
-            ">
+            <div class="cta-buttons">
 
 
-                <a href="#contact"
-                   class="button button-light">
+                <a
+                    href="#contact"
+                    class="button button-light">
 
                     Start a conversation
 
-                    <span>
+                    <span aria-hidden="true">
+
                         ↗
+
                     </span>
 
                 </a>
 
 
-                <a href="#products"
-                   class="button button-dark-outline">
+                <a
+                    href="#products"
+                    class="button button-dark-outline">
 
                     Explore products
 
@@ -3545,8 +3649,11 @@
 
                 Share the business problem,
                 workflow or idea you're working
-                on and we'll explore where
-                technology can create value.
+                on.
+
+                We'll explore whether we're the
+                right fit and where technology
+                can create meaningful value.
 
             </p>
 
@@ -3559,14 +3666,20 @@
                     class="contact-link">
 
                     <span>
+
                         Email
+
                     </span>
 
+
                     <span>
+
                         info@arunodaycare.com ↗
+
                     </span>
 
                 </a>
+
 
 
                 <a
@@ -3576,14 +3689,20 @@
                     class="contact-link">
 
                     <span>
+
                         WhatsApp
+
                     </span>
 
+
                     <span>
+
                         Start chat ↗
+
                     </span>
 
                 </a>
+
 
 
                 <a
@@ -3591,11 +3710,16 @@
                     class="contact-link">
 
                     <span>
+
                         Phone
+
                     </span>
 
+
                     <span>
+
                         +91-7009036138 ↗
+
                     </span>
 
                 </a>
@@ -3618,7 +3742,6 @@
 
 <footer>
 
-
     <div class="container footer-inner">
 
 
@@ -3626,7 +3749,6 @@
 
             ©
             <span id="year"></span>
-
             ArunodayCare Technologies
 
         </div>
@@ -3641,7 +3763,6 @@
 
     </div>
 
-
 </footer>
 
 
@@ -3652,21 +3773,20 @@
 
 <script>
 
-
-    /* ==========================
+    /* ======================================================
        CURRENT YEAR
-    ========================== */
+    ====================================================== */
 
-    document.getElementById(
-        "year"
-    ).textContent =
+    document
+        .getElementById("year")
+        .textContent =
         new Date().getFullYear();
 
 
 
-    /* ==========================
-       NAV SCROLL EFFECT
-    ========================== */
+    /* ======================================================
+       NAVBAR SCROLL
+    ====================================================== */
 
     const navbar =
         document.getElementById(
@@ -3674,34 +3794,32 @@
         );
 
 
+    function updateNavbar() {
+
+        navbar.classList.toggle(
+            "scrolled",
+            window.scrollY > 20
+        );
+
+    }
+
+
+    updateNavbar();
+
+
     window.addEventListener(
         "scroll",
-        () => {
-
-            if (
-                window.scrollY > 20
-            ) {
-
-                navbar.classList.add(
-                    "scrolled"
-                );
-
-            } else {
-
-                navbar.classList.remove(
-                    "scrolled"
-                );
-
-            }
-
+        updateNavbar,
+        {
+            passive: true
         }
     );
 
 
 
-    /* ==========================
+    /* ======================================================
        MOBILE MENU
-    ========================== */
+    ====================================================== */
 
     const menuButton =
         document.getElementById(
@@ -3719,84 +3837,191 @@
         "click",
         () => {
 
-            navLinks.classList.toggle(
-                "active"
+            const isOpen =
+                navLinks.classList.toggle(
+                    "active"
+                );
+
+
+            menuButton.setAttribute(
+                "aria-expanded",
+                String(isOpen)
             );
+
+
+            menuButton.textContent =
+                isOpen
+                    ? "×"
+                    : "☰";
 
         }
     );
 
 
-    document.querySelectorAll(
-        ".nav-links a"
-    ).forEach(link => {
+    document
+        .querySelectorAll(
+            ".nav-links a"
+        )
+        .forEach(
+            link => {
 
-        link.addEventListener(
-            "click",
-            () => {
+                link.addEventListener(
+                    "click",
+                    () => {
 
-                navLinks.classList.remove(
-                    "active"
-                );
-
-            }
-        );
-
-    });
+                        navLinks
+                            .classList
+                            .remove(
+                                "active"
+                            );
 
 
+                        menuButton
+                            .setAttribute(
+                                "aria-expanded",
+                                "false"
+                            );
 
-    /* ==========================
-       SCROLL REVEAL
-    ========================== */
 
-    const revealObserver =
-        new IntersectionObserver(
-
-            entries => {
-
-                entries.forEach(
-                    entry => {
-
-                        if (
-                            entry.isIntersecting
-                        ) {
-
-                            entry.target
-                                .classList
-                                .add(
-                                    "visible"
-                                );
-
-                            revealObserver
-                                .unobserve(
-                                    entry.target
-                                );
-
-                        }
+                        menuButton
+                            .textContent =
+                            "☰";
 
                     }
                 );
 
-            },
-
-            {
-                threshold: .10
             }
-
         );
 
 
-    document.querySelectorAll(
-        ".reveal"
-    ).forEach(
-        element => {
 
-            revealObserver.observe(
-                element
+    /* ======================================================
+       SCROLL REVEAL
+    ====================================================== */
+
+    const reducedMotion =
+        window.matchMedia(
+            "(prefers-reduced-motion: reduce)"
+        ).matches;
+
+
+    if (!reducedMotion) {
+
+
+        const revealObserver =
+            new IntersectionObserver(
+
+                entries => {
+
+                    entries.forEach(
+                        entry => {
+
+                            if (
+                                entry.isIntersecting
+                            ) {
+
+                                entry.target
+                                    .classList
+                                    .add(
+                                        "visible"
+                                    );
+
+
+                                revealObserver
+                                    .unobserve(
+                                        entry.target
+                                    );
+
+                            }
+
+                        }
+                    );
+
+                },
+
+                {
+                    threshold: .10
+                }
+
             );
 
-        }
+
+        document
+            .querySelectorAll(
+                ".reveal"
+            )
+            .forEach(
+                element => {
+
+                    revealObserver
+                        .observe(
+                            element
+                        );
+
+                }
+            );
+
+
+    } else {
+
+
+        document
+            .querySelectorAll(
+                ".reveal"
+            )
+            .forEach(
+                element => {
+
+                    element
+                        .classList
+                        .add(
+                            "visible"
+                        );
+
+                }
+            );
+
+    }
+
+
+
+    /* ======================================================
+       DEVICE THEME COLOUR
+
+       Updates browser chrome on supported mobile browsers.
+    ====================================================== */
+
+    const darkModeQuery =
+        window.matchMedia(
+            "(prefers-color-scheme: dark)"
+        );
+
+
+    const themeColor =
+        document.getElementById(
+            "themeColor"
+        );
+
+
+    function updateThemeColor() {
+
+        themeColor.setAttribute(
+            "content",
+
+            darkModeQuery.matches
+                ? "#090a0c"
+                : "#f8f8f6"
+        );
+
+    }
+
+
+    updateThemeColor();
+
+
+    darkModeQuery.addEventListener(
+        "change",
+        updateThemeColor
     );
 
 
