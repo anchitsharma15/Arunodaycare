@@ -809,6 +809,8 @@ section {
 
     position: relative;
 
+    display: grid;
+
     width: 100%;
 
     min-height: 430px;
@@ -818,9 +820,11 @@ section {
 
 .service-slide {
 
-    position: absolute;
+    position: relative;
 
-    inset: 0;
+    grid-area: 1 / 1;
+
+    min-width: 0;
 
     padding: 34px;
 
