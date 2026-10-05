@@ -17,12 +17,21 @@
     document.head.appendChild(script);
   }
 
-  if (gaEnabled) {
+  var consentKey = "arunodaycare.analytics-consent.v1";
+  var consent = null;
+  var initialized = false;
+  var banner;
+  try { consent = window.localStorage.getItem(consentKey); } catch (_) {}
+  if (consent !== "granted" && consent !== "denied") consent = null;
+
+  function startAnalytics() {
+    if (!gaEnabled || initialized || consent !== "granted") return;
+    initialized = true;
     window.dataLayer = window.dataLayer || [];
     window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
-    // Do not assume visitor consent. No advertising storage or personalization.
+    // Load only after an actual choice; advertising remains disabled.
     window.gtag("consent", "default", {
-      analytics_storage: "denied", ad_storage: "denied",
+      analytics_storage: "granted", ad_storage: "denied",
       ad_user_data: "denied", ad_personalization: "denied"
     });
     window.gtag("js", new Date());
@@ -54,7 +63,7 @@
   }
 
   function track(name, placement) {
-    if (!allowedEvents.has(name)) return;
+    if (!initialized || consent !== "granted" || !allowedEvents.has(name)) return;
     try {
       if (gaEnabled) window.gtag("event", name, {
         send_to: config.ga4MeasurementId,
@@ -72,11 +81,63 @@
     if (link) track(link.dataset.analyticsEvent, link.dataset.analyticsPlacement);
   }, true);
 
-  window.arunodayAnalytics = Object.freeze({
-    // Call only from a consent manager after an actual visitor decision.
-    setAnalyticsConsent: function (granted) {
-      var status = granted === true ? "granted" : "denied";
-      if (gaEnabled) window.gtag("consent", "update", { analytics_storage: status });
+  function clearAnalyticsCookies() {
+    var names = document.cookie.split(";").map(function (cookie) {
+      return cookie.trim().split("=")[0];
+    }).filter(function (name) { return /^_ga(?:_|$)/.test(name); });
+    var domains = ["", window.location.hostname, ".arunodaycare.com"];
+    names.forEach(function (name) {
+      domains.forEach(function (domain) {
+        document.cookie = name + "=; Max-Age=0; path=/" +
+          (domain ? "; domain=" + domain : "") + "; SameSite=Lax";
+      });
+    });
+  }
+
+  function setConsent(granted) {
+    consent = granted === true ? "granted" : "denied";
+    try { window.localStorage.setItem(consentKey, consent); } catch (_) {}
+    if (initialized) {
+      window.gtag("consent", "update", { analytics_storage: consent });
+    } else if (consent === "granted") {
+      startAnalytics();
     }
-  });
+    if (consent === "denied") clearAnalyticsCookies();
+    if (banner) banner.hidden = true;
+  }
+
+  window.arunodayAnalytics = Object.freeze({ setAnalyticsConsent: setConsent });
+
+  if (gaEnabled) {
+    startAnalytics();
+    banner = document.createElement("section");
+    banner.id = "analyticsConsent";
+    banner.setAttribute("aria-label", "Analytics preferences");
+    banner.hidden = consent !== null;
+    var message = document.createElement("p");
+    message.textContent = "May we use Google Analytics cookies to understand visits and improve this website? Your choice is optional. We do not enable advertising cookies.";
+    banner.appendChild(message);
+    var actions = document.createElement("div");
+    actions.className = "analytics-consent-actions";
+    [["Accept analytics", true], ["Decline", false]].forEach(function (choice) {
+      var button = document.createElement("button");
+      button.type = "button";
+      button.textContent = choice[0];
+      button.addEventListener("click", function () { setConsent(choice[1]); });
+      actions.appendChild(button);
+    });
+    banner.appendChild(actions);
+    document.body.appendChild(banner);
+    var preferences = document.createElement("button");
+    preferences.id = "analyticsPreferences";
+    preferences.type = "button";
+    preferences.textContent = "Analytics preferences";
+    preferences.setAttribute("aria-controls", banner.id);
+    preferences.addEventListener("click", function () {
+      banner.hidden = !banner.hidden;
+      if (!banner.hidden) banner.querySelector("button").focus();
+    });
+    var footer = document.querySelector("footer");
+    (footer || document.body).appendChild(preferences);
+  }
 })();

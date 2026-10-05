@@ -27,7 +27,9 @@ After publication, open https://arunodaycare.com and Google Analytics → Report
 
 ## Consent
 
-Analytics storage starts **denied**, as do advertising storage, advertising user data and advertising personalization. No visitor cookie choice interface was added, so the current setup operates in denied-storage mode and has limited visitor/session reporting. Connect a consent manager to `window.arunodayAnalytics.setAnalyticsConsent(true/false)` only after a real visitor choice. Advertising remains denied. Google signals and ad personalization are disabled.
+The page presents a small **Accept analytics / Decline** choice and an **Analytics preferences** button in the footer. GA4 loads only after acceptance. Choices are remembered on this browser; a visitor may change them from the footer. Declining stops custom tracking and removes GA cookies on the site. Advertising storage, advertising user data, advertising personalization and Google signals remain disabled.
+
+The previous version kept analytics storage denied without providing a consent choice. The correction requires a new publication. After publishing, accept analytics during a real site visit and check the correct GA4 property's Realtime report. Standard reports can take 24–48 hours. Browser content blockers can also prevent collection.
 
 ## References
 

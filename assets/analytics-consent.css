@@ -1,0 +1,32 @@
+/* Analytics choice uses the existing site palette and typography. */
+#analyticsConsent[hidden] { display: none; }
+#analyticsConsent {
+  position: fixed;
+  z-index: 10000;
+  bottom: 18px;
+  left: 18px;
+  width: min(460px, calc(100% - 36px));
+  padding: 20px;
+  background: var(--surface, #fff);
+  color: var(--text, #0c0d10);
+  border: 1px solid var(--text-soft, #2a2b30);
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgb(0 0 0 / 12%);
+  font: 14px/1.6 Inter, sans-serif;
+}
+#analyticsConsent p { margin: 0 0 14px; }
+.analytics-consent-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+#analyticsConsent button, #analyticsPreferences {
+  font: inherit;
+  cursor: pointer;
+  border: 1px solid var(--text-soft, #2a2b30);
+  border-radius: 8px;
+  padding: 9px 14px;
+  background: var(--surface, #fff);
+  color: var(--text, #0c0d10);
+}
+#analyticsPreferences { margin: 16px; font-size: 12px; }
+#analyticsConsent button:focus-visible, #analyticsPreferences:focus-visible {
+  outline: 2px solid var(--text, #0c0d10);
+  outline-offset: 3px;
+}
