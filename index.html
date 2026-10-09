@@ -1518,6 +1518,55 @@ section {
    PRODUCTS
 ========================================================== */
 
+/* Public application showcase */
+.live-applications {
+    margin-top: 64px;
+    scroll-margin-top: 110px;
+}
+.live-applications .section-heading h3 {
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    line-height: 1.05;
+    letter-spacing: -.045em;
+}
+.app-card {
+    background: var(--surface);
+    justify-content: flex-start;
+}
+.app-preview {
+    margin-top: 26px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--surface-2);
+}
+.app-preview img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: contain;
+}
+.app-preview figcaption {
+    padding: 10px 14px;
+    font-size: .72rem;
+    color: var(--muted);
+}
+.app-card .button {
+    margin-top: 26px;
+    align-self: flex-start;
+}
+.service-consultation {
+    display: inline-block;
+    margin-top: 12px;
+    color: var(--text);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+.app-card .button:focus-visible,
+.service-consultation:focus-visible {
+    outline: 3px solid var(--blue);
+    outline-offset: 5px;
+}
+
 .product-grid {
 
     display: grid;
@@ -1656,7 +1705,8 @@ section {
 }
 
 
-.product-card h3 {
+.product-card h3,
+.app-card h4 {
 
     max-width: 520px;
 
@@ -4228,6 +4278,36 @@ footer {
 
         </div>
 
+        <section id="live-applications" class="live-applications" aria-labelledby="live-applications-heading">
+            <div class="section-heading reveal">
+                <span class="eyebrow">Business Applications</span>
+                <h3 id="live-applications-heading">Live Applications</h3>
+                <p>Practical applications for everyday business. Explore the live apps below; sign-in is required to access a workspace.</p>
+            </div>
+            <div class="product-grid">
+                <article class="product-card app-card reveal">
+                    <div class="product-label">Inventory Management</div>
+                    <h4>SolarStock</h4>
+                    <p>An inventory management application with a dedicated workspace for warehouse operations.</p>
+                    <figure class="app-preview">
+                        <img src="assets/apps/solarstock-public.jpg" alt="SolarStock public sign-in screen with empty email and password fields" width="1280" height="720" loading="lazy" decoding="async">
+                        <figcaption>Public sign-in screen</figcaption>
+                    </figure>
+                    <a href="https://solarstock.arunodaycare.com/" target="_blank" rel="noopener noreferrer" class="button button-primary" aria-label="Explore SolarStock (opens in a new tab)">Explore SolarStock <span aria-hidden="true">↗</span></a>
+                </article>
+                <article class="product-card app-card reveal">
+                    <div class="product-label">Tuition Fee Management</div>
+                    <h4>FeeFlow</h4>
+                    <p>A tuition fee tracker for independent tutors to manage class fees and see which payments are paid or pending.</p>
+                    <figure class="app-preview">
+                        <img src="assets/apps/feeflow-public.jpg" alt="FeeFlow public sign-in screen introducing tuition fee tracking for independent tutors" width="1265" height="712" loading="lazy" decoding="async">
+                        <figcaption>Public sign-in screen</figcaption>
+                    </figure>
+                    <a href="https://feeflow.arunodaycare.com/" target="_blank" rel="noopener noreferrer" class="button button-primary" aria-label="Explore FeeFlow (opens in a new tab)">Explore FeeFlow <span aria-hidden="true">↗</span></a>
+                </article>
+            </div>
+        </section>
+
     </div>
 
 </section>
@@ -4376,7 +4456,7 @@ footer {
                 Services focused on the systems
                 businesses increasingly depend on:
                 reliable data, actionable analytics,
-                intelligent automation and AI.
+                intelligent automation, AI and custom applications.
 
             </p>
 
@@ -4616,6 +4696,15 @@ footer {
 
             </div>
 
+
+            <div class="service-row reveal">
+                <div class="service-number">07</div>
+                <div><h3>Custom Application Development</h3></div>
+                <p>Purpose-built web applications for your business workflows, from inventory management to tuition fee tracking.
+                    <a href="#contact" class="service-consultation" data-analytics-event="project_enquiry" data-analytics-placement="custom_application_development">Discuss your app — free initial consultation ↗</a>
+                </p>
+                <div class="service-arrow" aria-hidden="true">→</div>
+            </div>
 
         </div>
 
@@ -5091,8 +5180,9 @@ footer {
                 Whether you need an AI agent,
                 analytics platform, intelligent
                 workflow, executive training or a
-                custom data solution, we can explore
-                whether we're the right fit.
+                custom application, we can explore
+                whether we're the right fit. Your initial
+                consultation is free.
 
             </p>
 
@@ -5101,7 +5191,7 @@ footer {
                 href="#contact"
                 class="button button-primary" data-analytics-event="start_conversation" data-analytics-placement="call_to_action">
 
-                Start a conversation
+                Book a free initial consultation
 
                 <span>
                     ↗
