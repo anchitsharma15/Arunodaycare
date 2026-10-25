@@ -6,10 +6,10 @@
     <meta charset="UTF-8">
 
     <link rel="stylesheet" href="assets/analytics-consent.css">
-    <link rel="stylesheet" href="assets/assistant-link.css">
+    <link rel="stylesheet" href="assets/assistant-link.css?v=popup-1">
     <script defer src="assets/analytics-config.js"></script>
     <script defer src="assets/analytics.js"></script>
-    <script defer src="assets/assistant-link.js"></script>
+    <script defer src="assets/assistant-link.js?v=popup-1"></script>
 
     <meta
         name="viewport"
@@ -6250,16 +6250,30 @@ startAuto();
     href="https://arunodaycare-ai-assistant.anchit-sharma15.workers.dev/"
     target="_blank"
     rel="noopener noreferrer"
-    aria-label="Chat with ArunodayCare's AI assistant (opens in a new tab)">
+    aria-label="Open chat with ArunodayCare's AI assistant"
+    aria-haspopup="dialog"
+    aria-controls="assistantPopup">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true" focusable="false">
         <path d="M20 11.5a8 8 0 0 1-8 8H4l1.5-4A8 8 0 1 1 20 11.5Z" stroke-linejoin="round"/>
         <path d="M8 10h8M8 14h5" stroke-linecap="round"/>
     </svg>
     <span>
-        <strong>Chat with us <span aria-hidden="true">↗</span></strong>
+        <strong>Chat with us</strong>
         <small>AI assistant</small>
     </span>
 </a>
+
+<dialog class="assistant-popup" id="assistantPopup" aria-labelledby="assistantPopupTitle">
+    <div class="assistant-popup-toolbar">
+        <h2 id="assistantPopupTitle">Chat with us</h2>
+        <button type="button" id="assistantPopupClose" aria-label="Close chat" autofocus>×</button>
+    </div>
+    <p class="assistant-popup-status" id="assistantPopupStatus" role="status">Loading the assistant…</p>
+    <iframe id="assistantPopupFrame" title="ArunodayCare automated receptionist" referrerpolicy="no-referrer" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox" hidden></iframe>
+    <div class="assistant-popup-footer">
+        <a href="https://arunodaycare-ai-assistant.anchit-sharma15.workers.dev/" target="_blank" rel="noopener noreferrer">Open full page ↗</a>
+    </div>
+</dialog>
 
 </body>
 
