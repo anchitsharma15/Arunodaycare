@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://arunodaycare.com/sitemap.xml
